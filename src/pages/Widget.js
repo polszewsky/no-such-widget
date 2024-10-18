@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AlertRow from "./AlertRow";
 import { Mail } from "@mui/icons-material";
-import AlertConfiguration from "./alertConfiguration";
+import AlertConfiguration from "./AlertConfiguration";
 
 export default function Widget() {
   const [alerts] = useState([{ id: 1 }, { id: 2 }]);
