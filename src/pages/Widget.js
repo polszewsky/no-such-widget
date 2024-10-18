@@ -5,9 +5,13 @@ import React, { useState } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AlertRow from "./AlertRow";
 import { Mail } from "@mui/icons-material";
+import AlertConfiguration from "./alertConfiguration";
 
 export default function Widget() {
   const [alerts] = useState([{ id: 1 }, { id: 2 }]);
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
   return (
     <Paper elevation={3}>
@@ -28,9 +32,10 @@ export default function Widget() {
           Mark all as read
         </Grid>
         <Grid size={1} p={0} sx={{ textAlign: "right" }}>
-          <IconButton aria-label="delete">
+          <IconButton title="Alerts configuration" onClick={handleOpen} aria-label="delete">
             <SettingsIcon />
           </IconButton>
+          <AlertConfiguration handleOpen={open} handleClose={handleClose}></AlertConfiguration>
         </Grid>
       </Grid>
 
