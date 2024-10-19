@@ -8,12 +8,15 @@ import { FilterAlt } from "@mui/icons-material";
 import AlertConfiguration from "./AlertConfiguration";
 import WidgetFilterModal from "../modals/WidgetFilterModal";
 import AlertRow from "./AlertRow";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { notifyInfo } from "../actualAlert/actualAlertSlice";
 
 export default function Widget({ showList = false }) {
   const { filteredNotifications = [] } = useSelector(
     (store) => store.notificationsList
   );
+
+  const dispatch = useDispatch();
 
   //configuration
   const [open, setOpen] = React.useState(false);
@@ -73,6 +76,9 @@ export default function Widget({ showList = false }) {
               color="#328050"
               size="small"
               variant="text"
+              onClick={() =>
+                dispatch(notifyInfo("Sorry, This is Proof of Concept :)"))
+              }
             >
               Mark all as read
             </Button>
