@@ -1,14 +1,19 @@
-import { Alert, Chip, Typography, IconButton, Divider } from "@mui/material";
+import { Alert, Chip, Typography, Divider } from "@mui/material";
 import { Grid } from "@mui/system";
 import React from "react";
 import AlertDetails from "./AlertDetails";
-import { Search } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { loadSelectedNotification } from "../slices/notificationsList";
 
 export default function AlertRow(props) {
   const { notification = {} } = props;
+  const dispatch = useDispatch();
 
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    dispatch(loadSelectedNotification({ id: notification?.id }));
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   return (
@@ -155,7 +160,7 @@ export default function AlertRow(props) {
                 2024-12-12
               </Typography>
             </Grid>
-            <Grid>
+            {/* <Grid>
               <IconButton
                 aria-label="delete"
                 color="primary"
@@ -164,13 +169,13 @@ export default function AlertRow(props) {
               >
                 <Search />
               </IconButton>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>
       <Divider flexItem sx={{ marginBottom: "4px" }} />
 
-      <AlertDetails handleOpen={open} handleClose={handleClose}></AlertDetails>
+      <AlertDetails handleOpen={open} closeAction={handleClose} />
     </>
   );
 }

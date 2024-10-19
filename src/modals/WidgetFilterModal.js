@@ -20,6 +20,7 @@ import { updateFilterActiveType } from "../slices/filterSlice";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import MergeTypeIcon from "@mui/icons-material/MergeType";
 import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
+import { notifyError } from "../actualAlert/actualAlertSlice";
 
 export default function WidgetFilterModal(props) {
   const { open, onClose } = props;
@@ -195,7 +196,9 @@ export default function WidgetFilterModal(props) {
             <Grid size={"auto"}>
               <Button
                 variant="contained"
-                onClick={() => alert("Sorry. Just proof of concept :)")}
+                onClick={() =>
+                  dispatch(notifyError("Sorry, just proof of concept"))
+                }
               >
                 Sort
               </Button>

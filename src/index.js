@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import HomePage from "./pages/HomePage";
 import { Route, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
+import { ActualAlert } from "./actualAlert/ActualAlert";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,6 +20,7 @@ root.render(
           <Route path="/" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
+      <ActualAlert />
     </Provider>
   </React.StrictMode>
 );
