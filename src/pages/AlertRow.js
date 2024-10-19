@@ -26,10 +26,10 @@ export default function AlertRow(props) {
           //padding: "2px 4px 2px 4px",
           justifyContent: "center",
           alignItems: "top",
-          backgroundColor: notification?.read ? "inherit" : "#fcfcfc",
+          backgroundColor: notification?.read ? "inherit" : "#fafafa",
           borderLeft: notification?.read
             ? "4px solid #fff"
-            : "4px solid #FFD700",
+            : "4px solid #002e3c",
         }}
       >
         <Grid
@@ -57,7 +57,11 @@ export default function AlertRow(props) {
                   color="error"
                   size="small"
                   label={`Due ${notification?.due ?? "-"} days`}
-                  sx={{ borderRadius: "2px", opacity: "92%" }}
+                  sx={{
+                    borderRadius: "2px",
+                    opacity: "92%",
+                    backgroundColor: "#D32F2Fdd",
+                  }}
                 />
               )}
             </Grid>
