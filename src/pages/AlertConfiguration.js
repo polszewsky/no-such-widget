@@ -7,25 +7,13 @@ import {
   IconButton,
   Drawer,
 } from "@mui/material";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { Grid } from "@mui/system";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AlertConfigurationType from "./AlertConfigurationType";
 import NewAlertForm from "./NewAlertForm";
-
-// const styleModal = {
-//   position: "absolute",
-//   top: 0,
-//   right: 0,
-//   width: 500,
-//   height: "100%",
-//   bgcolor: "background.paper",
-//   border: "2px solid #000",
-//   boxShadow: 24,
-//   p: 4,
-// };
+import { alertConfigurationData } from "../data/AlertConfigurationData";
 
 function AlertConfiguration(props) {
-  const alerts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
   const { open, onClose } = props;
 
   const [newOpen, setOpen] = React.useState(false);
@@ -35,40 +23,67 @@ function AlertConfiguration(props) {
       anchor="right"
       open={open}
       onClose={onClose}
-      PaperProps={{ sx: { width: 500 } }}
+      PaperProps={{ sx: { width: 450 } }}
     >
       <Box>
-        <Container
+        <Grid
+          container
           sx={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            backgroundColor: "#002e3c",
+            borderRadius: "4px 4px 0px 0px",
+            padding: 1,
           }}
         >
-          <Typography sx={{ variant: "title" }}>
-            Configuration of alerts
+          <Typography
+            sx={{
+              variant: "title",
+              fontSize: 30,
+              fontFamily: "bold",
+              color: "#ffd700",
+            }}
+          >
+            Custom notifications
           </Typography>
           <IconButton
             title="Add new custom alert"
             onClick={() => setOpen(true)}
           >
-            <AddCircleIcon fontSize="large" />
+            <AddCircleOutlineIcon style={{ fontSize: 38, color: "#ffd700" }} />
           </IconButton>
           <NewAlertForm
             handleOpen={newOpen}
             handleClose={() => setOpen(false)}
           ></NewAlertForm>
-        </Container>
-        <hr />
-        <Container>
-          {alerts.map((alert) => {
+        </Grid>
+        <Grid
+          container
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundColor: "#D3D3D3",
+            borderRadius: "4px 4px 0px 0px",
+            padding: 2,
+          }}
+        >
+          <Grid size="auto">
+            <Typography>Title</Typography>
+          </Grid>
+        </Grid>
+        <Grid>
+          {alertConfigurationData.configurations.map((configuration) => {
             return (
-              <AlertConfigurationType number={alert}></AlertConfigurationType>
+              <AlertConfigurationType
+                configuration={configuration}
+              ></AlertConfigurationType>
             );
           })}
-        </Container>
+        </Grid>
         <hr />
-        <Container
+        <Grid
           sx={{
             display: "flex",
             alignItems: "center",
@@ -77,7 +92,7 @@ function AlertConfiguration(props) {
         >
           <Typography>External alerts (News)</Typography>
           <Switch defaultChecked />
-        </Container>
+        </Grid>
       </Box>
     </Drawer>
   );
