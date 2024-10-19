@@ -1,11 +1,12 @@
-import { Badge, Button, IconButton, Paper, Typography } from "@mui/material";
+import { Button, IconButton, Paper, Typography } from "@mui/material";
 import { Grid } from "@mui/system";
 import React, { useState } from "react";
 
 import SettingsIcon from "@mui/icons-material/Settings";
 import AlertRow from "./AlertRow";
-import { Delete, Mail } from "@mui/icons-material";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+import { FilterAlt } from "@mui/icons-material";
+import AlertConfiguration from "./AlertConfiguration";
 export default function Widget() {
   const [alerts] = useState([
     { id: 1 },
@@ -54,7 +55,7 @@ export default function Widget() {
         </Grid>
         <Grid size={1} p={0} sx={{ textAlign: "right" }}>
           <IconButton>
-            <FilterAltIcon />
+            <FilterAlt />
           </IconButton>
         </Grid>
         <Grid size={1} p={0} sx={{ textAlign: "right" }}>
