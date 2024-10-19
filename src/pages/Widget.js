@@ -80,16 +80,12 @@ export default function Widget() {
             </Button>
           </Grid>
           <Grid p={0} sx={{ textAlign: "right" }}>
-            <IconButton>
-              <FilterAlt
-                title="Filters configuration"
-                onClick={toggleFilter(true)}
-                aria-label="filters"
-              />
+            <IconButton onClick={toggleFilter(true)}>
+              <FilterAlt title="Filters configuration" aria-label="filters" />
             </IconButton>
             <IconButton
-              title="Alerts configuration"
               onClick={toggleDrawer(true)}
+              title="Alerts configuration"
               aria-label="settings"
             >
               <SettingsIcon />
