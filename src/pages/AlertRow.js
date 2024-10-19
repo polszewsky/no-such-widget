@@ -5,7 +5,7 @@ import AlertDetails from "./AlertDetails";
 import { Search } from "@mui/icons-material";
 
 export default function AlertRow(props) {
-  const { alert = {} } = props;
+  const { notification = {} } = props;
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -14,6 +14,7 @@ export default function AlertRow(props) {
   return (
     <>
       <Grid
+        onClick={handleOpen}
         container
         sx={{
           minHeight: "20px",
@@ -42,19 +43,48 @@ export default function AlertRow(props) {
           >
             <Grid>
               {/** THI IS TYPE : automtic / manual / external*/}
-              <Alert
-                severity="success"
-                sx={{ paddingLeft: "26px", border: "1px solid #002e3c" }}
-              />
+              {notification.archived === false && (
+                <Chip
+                  color="error"
+                  size="small"
+                  label="due 4 days"
+                  sx={{ borderRadius: "2px", opacity: "92%" }}
+                />
+              )}
             </Grid>
-            <Grid sx={{ marginTop: "2px", marginBottom: "2px" }}>
-              <Chip color="error" size="small" label="due 4 days" />
-              {/* <Typography
-                variant="overline"
-                sx={{ fontWeight: "bold", fontSize: "8pt", color: "red" }}
-              >
-                Due in 4 days
-              </Typography> */}
+            <Grid sx={{ marginTop: "4px", marginBottom: "2px" }}>
+              {notification?.category === "automatic" && (
+                <Alert
+                  severity="success"
+                  sx={{
+                    paddingLeft: "26px",
+                    backgroundColor: "#fafafa",
+                    border: "1px solid #e8e8e8",
+                  }}
+                />
+              )}
+
+              {notification?.category === "conditional" && (
+                <Alert
+                  severity="warning"
+                  sx={{
+                    paddingLeft: "26px",
+                    backgroundColor: "#fafafa",
+                    border: "1px solid #e8e8e8",
+                  }}
+                />
+              )}
+
+              {notification?.category === "external" && (
+                <Alert
+                  severity="info"
+                  sx={{
+                    paddingLeft: "26px",
+                    backgroundColor: "#fafafa",
+                    border: "1px solid #e8e8e8",
+                  }}
+                />
+              )}
             </Grid>
           </Grid>
         </Grid>
@@ -69,7 +99,8 @@ export default function AlertRow(props) {
                 </Typography> */}
                 {/** THI IS cathegory*/}
                 <Chip
-                  label="Fix term deposits"
+                  style={{ backgroundColor: "#FFD70066", color: "#555" }}
+                  label={notification?.type}
                   size="small"
                   sx={{ borderRadius: "2px" }}
                 />
@@ -82,16 +113,20 @@ export default function AlertRow(props) {
                 sx={{ fontWeight: "bold", fontSize: "14pt", color: "#002E3C" }}
               >
                 {/** TITLE CARD */}
-                Tiltle title great title {alert?.id}
+                {notification?.title.length > 50
+                  ? notification?.title.substr(0, 50) + "..."
+                  : notification?.title}
               </Typography>
             </Grid>
             <Grid>
               <Typography
                 variant="body2"
-                sx={{ fontWeight: "300", fontSize: "10pt", color: "#444" }}
+                sx={{ fontWeight: "300", fontSize: "10pt", color: "#002E3Cbb" }}
               >
                 {/** DESCRIPTION -> cut of after 40/50 letters */}
-                Tiltle title great title
+                {notification?.description.length > 75
+                  ? notification?.description.substr(0, 75) + " .."
+                  : notification?.description}
               </Typography>
             </Grid>
           </Grid>
@@ -125,6 +160,7 @@ export default function AlertRow(props) {
                 aria-label="delete"
                 color="primary"
                 onClick={handleOpen}
+                sx={{ color: "#002E3C" }}
               >
                 <Search />
               </IconButton>

@@ -6,8 +6,8 @@ export const filterSlice = createSlice({
     filters: {
       type: "active", // active - archived
       sort: {
-        type: true,
-        dueDate: false,
+        type: false,
+        dueDate: true,
         category: false,
       },
     },

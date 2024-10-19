@@ -1,11 +1,20 @@
 import { Container, Grid } from "@mui/system";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFilteredNotifications } from "../slices/notificationsList";
 import Widget from "./Widget";
 
 function HomePage() {
+  const dispatch = useDispatch();
+  const { type } = useSelector((store) => store.filter.filters);
+
+  useEffect(() => {
+    dispatch(getFilteredNotifications(type));
+  }, [dispatch, type]);
+
   return (
     <Fragment>
-      <Container fixed sx={{ marginTop: "20vh" }}>
+      <Container fixed sx={{ marginTop: "13vh" }}>
         <Grid
           container
           spacing={2}

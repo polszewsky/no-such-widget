@@ -1,6 +1,6 @@
 import { Badge, Button, IconButton, Paper, Typography } from "@mui/material";
 import { Grid } from "@mui/system";
-import React, { useState } from "react";
+import React from "react";
 
 import SettingsIcon from "@mui/icons-material/Settings";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
@@ -8,15 +8,12 @@ import { FilterAlt } from "@mui/icons-material";
 import AlertConfiguration from "./AlertConfiguration";
 import WidgetFilterModal from "../modals/WidgetFilterModal";
 import AlertRow from "./AlertRow";
+import { useSelector } from "react-redux";
 
 export default function Widget() {
-  const [alerts] = useState([
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-  ]);
+  const { filteredNotifications = [] } = useSelector(
+    (store) => store.notificationsList
+  );
 
   //configuration
   const [open, setOpen] = React.useState(false);
@@ -44,7 +41,7 @@ export default function Widget() {
         >
           <Grid size={6} p={1}>
             <Badge
-              badgeContent={4}
+              badgeContent={filteredNotifications.length ?? 0}
               color="primary"
               anchorOrigin={{
                 vertical: "top",
@@ -93,9 +90,11 @@ export default function Widget() {
           </Grid>
         </Grid>
 
-        {alerts.map((a, index) => (
-          <AlertRow key={index} alert={a} />
-        ))}
+        <Paper elevation={3} sx={{ overflow: "auto", maxHeight: "500px" }}>
+          {filteredNotifications.map((noty, index) => (
+            <AlertRow key={index} notification={noty} />
+          ))}
+        </Paper>
         <Grid sx={{ minHeight: "2px" }} />
       </Paper>
 
