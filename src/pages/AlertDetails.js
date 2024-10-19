@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Button, Modal, Box } from "@mui/material";
+import { Typography, Button, Drawer, Box } from "@mui/material";
 import { Container, Grid } from "@mui/system";
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -31,12 +31,12 @@ export default function AlertDetails ({handleOpen, handleClose}) {
     return (
         <div>
         <Grid>
-            <Modal
+            <Drawer
+            anchor="right"
             open={handleOpen}
             onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description">
-                <Box sx={styleModal}>
+            PaperProps={{sx: { width: 500 }}}>
+                <Box padding={2}>
                     <Grid>
                         <Typography sx={{fontStyle: 'italic', color: 'red'}}>Document needs your approval</Typography>
                     </Grid>
@@ -102,7 +102,7 @@ export default function AlertDetails ({handleOpen, handleClose}) {
                         <Button sx={styleBottonButton}>Go to document</Button>
                     </Grid>
                 </Box>
-            </Modal>
+            </Drawer>
         </Grid>
         </div>
     );

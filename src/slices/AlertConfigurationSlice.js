@@ -12,20 +12,24 @@ const defaultAlertConfiguration = {
 
 
 const alertConfigurationSlice = createSlice({
-    
     name: "alertConfiguration",
     initialState: {
       user_id: 1,
-      vehicles: [defaultAlertConfiguration],
+      alerts: [defaultAlertConfiguration],
     },
 
     reducers: {
-      addUserVehicles: (state, action) => {
-        state.vehicles = action.payload;
+      addAlertConfiguration: (state, action) => {
+        state.alerts = action.payload;
       },
 
-      removeUserVehicle: (state, action) => {
-        state.vehicles.splice(action.payload, 1);
+      removeAlertConfiguration: (state, action) => {
+        state.alerts.splice(action.payload, 1);
       },
     },
   });
+
+
+export const { addAlertConfiguration, removeAlertConfiguration } = alertConfigurationSlice.actions;
+
+export default alertConfigurationSlice.reducer;

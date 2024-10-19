@@ -32,7 +32,8 @@ function AlertConfiguration(props) {
   const [newOpen, setOpen] = React.useState(false);
 
   return (
-    <Drawer anchor="right" open={open} onClose={onClose}>
+    <Drawer anchor="right" open={open} onClose={onClose}
+            PaperProps={{sx: { width: 500 }}}>
       <Box>
         <Container
           sx={{

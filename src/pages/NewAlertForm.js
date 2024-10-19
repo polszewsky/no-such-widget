@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Container, Box, Typography, TextField, Button } from '@mui/material';
+import { Drawer, Container, Box, Typography, TextField, Button } from '@mui/material';
 import Textarea from '@mui/joy/Textarea';
 
 const styleModal = {
@@ -18,7 +18,7 @@ function NewAlertForm ({handleOpen, handleClose}) {
     return (
         <div>
             <Container>
-                <Modal open={handleOpen} onClose={handleClose}>
+                <Drawer anchor="right" open={handleOpen} onClose={handleClose} PaperProps={{sx: { width: 500 }}}>
                     <Box sx={styleModal}>
                         <Container sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 1}}>
                             <Typography sx={{fontSize: 24}}>Add new custom alert</Typography>
@@ -57,7 +57,7 @@ function NewAlertForm ({handleOpen, handleClose}) {
                         </Button>
                         </Container>
                     </Box>
-                </Modal>
+                </Drawer>
             </Container>
         </div>
     );
