@@ -2,7 +2,6 @@ import React from "react";
 import {
   Typography,
   Box,
-  Modal,
   Container,
   Switch,
   IconButton,
@@ -12,17 +11,17 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AlertConfigurationType from "./AlertConfigurationType";
 import NewAlertForm from "./NewAlertForm";
 
-const styleModal = {
-  position: "absolute",
-  top: 0,
-  right: 0,
-  width: 500,
-  height: "100%",
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+// const styleModal = {
+//   position: "absolute",
+//   top: 0,
+//   right: 0,
+//   width: 500,
+//   height: "100%",
+//   bgcolor: "background.paper",
+//   border: "2px solid #000",
+//   boxShadow: 24,
+//   p: 4,
+// };
 
 function AlertConfiguration(props) {
   const alerts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
