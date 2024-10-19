@@ -2,7 +2,7 @@ import React from "react";
 import { Drawer, Box, Typography, TextField, Button } from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
 import { Grid } from "@mui/system";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { notifySuccess } from "../actualAlert/actualAlertSlice";
 
 function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {

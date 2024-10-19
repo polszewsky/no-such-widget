@@ -29,7 +29,7 @@ export default function AlertRow(props) {
           backgroundColor: notification?.read ? "inherit" : "#fafafa",
           borderLeft: notification?.read
             ? "4px solid #fff"
-            : "4px solid #002e3c",
+            : "4px solid #D32F2Fdd",
         }}
       >
         <Grid

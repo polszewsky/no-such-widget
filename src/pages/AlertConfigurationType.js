@@ -31,7 +31,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
           width: "80%",
           "&:hover": {
             color: "#ffd700",
-            backgroundColor: "#002e3c",
+            backgroundColor: "#002e3cbb",
           },
         }}
       >

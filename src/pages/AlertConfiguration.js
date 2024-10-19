@@ -1,10 +1,10 @@
 import React from "react";
-import { Typography, Box, Switch, IconButton, Drawer } from "@mui/material";
+import { Typography, Box, Switch, Drawer } from "@mui/material";
 import { Grid } from "@mui/system";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AlertConfigurationType from "./AlertConfigurationType";
 import NewAlertForm from "./NewAlertForm";
 import { alertConfigurationData } from "../data/AlertConfigurationData";
+import { OpenInNewOff } from "@mui/icons-material";
 
 function AlertConfiguration(props) {
   const { open, onClose } = props;
@@ -22,41 +22,50 @@ function AlertConfiguration(props) {
       onClose={onClose}
       PaperProps={{ sx: { width: 550 } }}
     >
-      <Box>
+      <Grid container>
         <Grid
-          container
+          size={12}
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            padding: "20px",
             backgroundColor: "#002e3c",
-            borderRadius: "4px 4px 0px 0px",
-            padding: 1,
           }}
         >
           <Typography
-            sx={{
-              variant: "title",
-              fontSize: 30,
-              fontFamily: "bold",
-              color: "#ffd700",
-            }}
+            sx={{ fontWeight: "bold", fontSize: "16pt", color: "#ffd700" }}
           >
-            Custom notifications
+            Custom Notifications
           </Typography>
-          <IconButton
-            title="Add new custom alert"
-            onClick={() => setOpen(true)}
-          >
-            <AddCircleOutlineIcon style={{ fontSize: 38, color: "#ffd700" }} />
-          </IconButton>
-          <NewAlertForm
-            handleOpen={newOpen}
-            handleClose={() => setOpen(false)}
-            configs={alertConfigs}
-            setConfigs={setAlertConfigs}
-          ></NewAlertForm>
         </Grid>
+        <Grid
+          container
+          spacing={1}
+          size={12}
+          sx={{
+            padding: "20px",
+            backgroundColor: "#b5cef777",
+
+            color: "#333",
+            "&:hover": {
+              color: "#2196F3",
+              cursor: "pointer",
+            },
+          }}
+          onClick={() => setOpen(true)}
+        >
+          <Grid>
+            <OpenInNewOff />
+          </Grid>
+          <Grid>
+            <Typography
+              sx={{ fontWeight: "bold", fontSize: "12pt", color: "inherit" }}
+            >
+              Add new Config
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <Box>
         <Grid>
           {alertConfigs.map((configuration) => {
             return (
@@ -64,7 +73,7 @@ function AlertConfiguration(props) {
                 configuration={configuration}
                 configs={alertConfigs}
                 setConfigs={setAlertConfigs}
-              ></AlertConfigurationType>
+              />
             );
           })}
         </Grid>
@@ -79,6 +88,13 @@ function AlertConfiguration(props) {
           <Switch defaultChecked />
         </Grid>
       </Box>
+
+      <NewAlertForm
+        handleOpen={newOpen}
+        handleClose={() => setOpen(false)}
+        configs={alertConfigs}
+        setConfigs={setAlertConfigs}
+      />
     </Drawer>
   );
 }
