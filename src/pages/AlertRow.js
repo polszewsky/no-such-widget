@@ -26,6 +26,10 @@ export default function AlertRow(props) {
           //padding: "2px 4px 2px 4px",
           justifyContent: "center",
           alignItems: "top",
+          backgroundColor: notification?.read ? "inherit" : "#fcfcfc",
+          borderLeft: notification?.read
+            ? "4px solid #fff"
+            : "4px solid #FFD700",
         }}
       >
         <Grid
@@ -115,7 +119,11 @@ export default function AlertRow(props) {
             <Grid>
               <Typography
                 variant="body2"
-                sx={{ fontWeight: "bold", fontSize: "14pt", color: "#002E3C" }}
+                sx={{
+                  fontWeight: notification?.read ? "300" : "bold",
+                  fontSize: "14pt",
+                  color: "#002E3C",
+                }}
               >
                 {/** TITLE CARD */}
                 {notification?.title.length > 50
@@ -155,7 +163,11 @@ export default function AlertRow(props) {
               {/** THI IS DATE OF PUBLICATION IF EXSISRS */}
               <Typography
                 variant="body2"
-                sx={{ fontWeight: "bold", fontSize: "8pt", color: "#999" }}
+                sx={{
+                  fontWeight: notification?.read ? "200" : "bold",
+                  fontSize: "8pt",
+                  color: "#999",
+                }}
               >
                 2024-12-12
               </Typography>

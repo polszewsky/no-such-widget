@@ -9,7 +9,6 @@ import {
 import { Grid } from "@mui/system";
 import React from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import ExpandMoreIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 

@@ -49,6 +49,22 @@ export const notificationsListSlice = createSlice({
         }
       }
     },
+    markNotificationAsRead: (state, action) => {
+      const selectedId = action.payload.id;
+
+      if (selectedId !== "" && selectedId !== null) {
+        // Find the object by id and update it immutably
+        const index = state.allNotifications.findIndex(
+          (n) => n.id === selectedId
+        );
+        if (index !== -1) {
+          state.allNotifications[index] = {
+            ...state.allNotifications[index],
+            read: true,
+          };
+        }
+      }
+    },
   },
 });
 
@@ -57,6 +73,7 @@ export const {
   getFilteredNotifications,
   loadSelectedNotification,
   archiveSelectedNotification,
+  markNotificationAsRead,
 } = notificationsListSlice.actions;
 
 export default notificationsListSlice.reducer;

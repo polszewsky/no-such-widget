@@ -11,7 +11,10 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import { TimelineOppositeContent } from "@mui/lab";
 import { useDispatch, useSelector } from "react-redux";
 import AlertConfirmModal from "../modals/AlertConfirmModal";
-import { archiveSelectedNotification } from "../slices/notificationsList";
+import {
+  archiveSelectedNotification,
+  markNotificationAsRead,
+} from "../slices/notificationsList";
 import { notifyInfo } from "../actualAlert/actualAlertSlice";
 
 export default function AlertDetails({ handleOpen, closeAction }) {
@@ -83,17 +86,17 @@ export default function AlertDetails({ handleOpen, closeAction }) {
                 09:30 am
               </TimelineOppositeContent>
               <TimelineSeparator>
-                <TimelineDot />
+                <TimelineDot color="warning" />
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>Due date</TimelineContent>
             </TimelineItem>
             <TimelineItem>
               <TimelineOppositeContent color="text.secondary">
-                09:30 am
+                {selectedNotification?.datetime}
               </TimelineOppositeContent>
               <TimelineSeparator>
-                <TimelineDot />
+                <TimelineDot color="success" />
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>Created</TimelineContent>
@@ -175,15 +178,30 @@ export default function AlertDetails({ handleOpen, closeAction }) {
             </Typography>
           </Typography>
         </Grid>
-        <Grid size={1} offset={{ md: 9 }}>
+        <Grid size={4} offset={{ md: 7 }}>
           <Button
             variant="outlined"
             color="error"
             onClick={() => openConfirmModal(true)}
           >
-            Archive
+            Move to Archive
           </Button>
         </Grid>
+        {!selectedNotification?.read && (
+          <Grid size={4} offset={{ md: 7 }}>
+            <Button
+              variant="text"
+              color="primary"
+              onClick={() =>
+                dispatch(
+                  markNotificationAsRead({ id: selectedNotification?.id })
+                )
+              }
+            >
+              mark as read
+            </Button>
+          </Grid>
+        )}
       </Grid>
 
       <AlertConfirmModal

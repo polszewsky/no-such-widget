@@ -1,5 +1,6 @@
 import {
   Button,
+  Collapse,
   Divider,
   Drawer,
   FormControl,
@@ -19,8 +20,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateFilterActiveType } from "../slices/filterSlice";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import MergeTypeIcon from "@mui/icons-material/MergeType";
-import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
 import { notifyError } from "../actualAlert/actualAlertSlice";
+import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
 
 export default function WidgetFilterModal(props) {
   const { open, onClose } = props;
@@ -54,6 +55,12 @@ export default function WidgetFilterModal(props) {
   //   const handleListItemClick = (event, index) => {
   //     setSelectedIndex(index);
   //   };
+
+  const [listOpen, setListOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setListOpen(!listOpen);
+  };
 
   return (
     <Drawer
@@ -160,9 +167,37 @@ export default function WidgetFilterModal(props) {
             >
               <ListItemText primary="Category" />
               <ListItemIcon>
-                <DriveFileMoveIcon />
+                {listOpen ? <ExpandLess /> : <ExpandMore />}
               </ListItemIcon>
             </ListItemButton>
+            <Collapse in={listOpen} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText primary="Regulatory" />
+                </ListItemButton>
+                <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText primary="Urgent" />
+                </ListItemButton>
+                <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText primary="Financial" />
+                </ListItemButton>
+                <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText primary="Transaction Approval" />
+                </ListItemButton>
+              </List>
+            </Collapse>
             <ListItemButton
               selected={filters.sort.category === true}
               //onClick={(event) => handleListItemClick(event, 2)}
