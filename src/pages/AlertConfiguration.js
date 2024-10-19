@@ -11,6 +11,10 @@ function AlertConfiguration(props) {
 
   const [newOpen, setOpen] = React.useState(false);
 
+  const [alertConfigs, setAlertConfigs] = React.useState(
+    alertConfigurationData.configurations
+  );
+
   return (
     <Drawer
       anchor="right"
@@ -49,10 +53,12 @@ function AlertConfiguration(props) {
           <NewAlertForm
             handleOpen={newOpen}
             handleClose={() => setOpen(false)}
+            configs={alertConfigs}
+            setConfigs={setAlertConfigs}
           ></NewAlertForm>
         </Grid>
         <Grid>
-          {alertConfigurationData.configurations.map((configuration) => {
+          {alertConfigs.map((configuration) => {
             return (
               <AlertConfigurationType
                 configuration={configuration}

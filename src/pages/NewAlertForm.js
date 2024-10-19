@@ -1,16 +1,18 @@
 import React from "react";
-import {
-  Drawer,
-  Container,
-  Box,
-  Typography,
-  TextField,
-  Button,
-} from "@mui/material";
+import { Drawer, Box, Typography, TextField, Button } from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
 import { Grid } from "@mui/system";
 
-function NewAlertForm({ handleOpen, handleClose }) {
+function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
+  const [title, setTitle] = React.useState("");
+  const [priority, setPriority] = React.useState("");
+  const [type, setType] = React.useState("");
+  const [subtype, setSubtype] = React.useState("");
+  const [trigger, setTrigger] = React.useState("");
+  const [client, setClient] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [url, setUrl] = React.useState("");
+
   return (
     <div>
       <Grid>
@@ -57,6 +59,7 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 label="title"
                 variant="outlined"
                 sx={{ width: "80%" }}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </Grid>
             <Grid
@@ -72,6 +75,7 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 label="priority"
                 variant="outlined"
                 sx={{ width: "80%" }}
+                onChange={(e) => setPriority(e.target.value)}
               />
             </Grid>
             <Grid
@@ -87,6 +91,7 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 label="type"
                 variant="outlined"
                 sx={{ width: "80%" }}
+                onChange={(e) => setType(e.target.value)}
               />
             </Grid>
             <Grid
@@ -102,6 +107,7 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 label="subtype"
                 variant="outlined"
                 sx={{ width: "80%" }}
+                onChange={(e) => setSubtype(e.target.value)}
               />
             </Grid>
             <Grid
@@ -117,6 +123,7 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 label="trigger condition"
                 variant="outlined"
                 sx={{ width: "80%" }}
+                onChange={(e) => setTrigger(e.target.value)}
               />
             </Grid>
             <Grid
@@ -132,6 +139,7 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 label="Client"
                 variant="outlined"
                 sx={{ width: "80%" }}
+                onChange={(e) => setClient(e.target.value)}
               />
             </Grid>
             <Grid
@@ -146,6 +154,7 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 placeholder="Description..."
                 minRows={2}
                 sx={{ width: "80%" }}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </Grid>
             <Grid
@@ -157,7 +166,12 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 marginBottom: 2,
               }}
             >
-              <Textarea placeholder="URL" minRows={2} sx={{ width: "80%" }} />
+              <Textarea
+                placeholder="URL"
+                minRows={2}
+                sx={{ width: "80%" }}
+                onChange={(e) => setUrl(e.target.value)}
+              />
             </Grid>
             <Grid
               sx={{
@@ -175,7 +189,22 @@ function NewAlertForm({ handleOpen, handleClose }) {
                   fontWeight: "bold",
                   minWidth: 100,
                 }}
-                onClick={handleClose}
+                onClick={() => {
+                  setConfigs([
+                    ...configs,
+                    {
+                      title: title,
+                      priority: priority,
+                      type: type,
+                      subtype: subtype,
+                      trigger: trigger,
+                      client: client,
+                      description: description,
+                      url: url,
+                    },
+                  ]);
+                  handleClose();
+                }}
               >
                 Save
               </Button>

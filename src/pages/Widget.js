@@ -17,6 +17,7 @@ export default function Widget() {
 
   //configuration
   const [open, setOpen] = React.useState(false);
+  
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
