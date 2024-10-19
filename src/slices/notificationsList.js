@@ -18,7 +18,7 @@ export const notificationsListSlice = createSlice({
       const activeFilter = action.payload === "active" ? true : false;
 
       state.filteredNotifications = state.allNotifications.filter(
-        (not) => not.read === !activeFilter
+        (not) => not.archived === !activeFilter
       );
     },
   },

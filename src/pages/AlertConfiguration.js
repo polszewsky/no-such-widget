@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Typography,
-  Box,
-  Container,
-  Switch,
-  IconButton,
-  Drawer,
-} from "@mui/material";
+import { Typography, Box, Switch, IconButton, Drawer } from "@mui/material";
 import { Grid } from "@mui/system";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AlertConfigurationType from "./AlertConfigurationType";

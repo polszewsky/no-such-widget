@@ -90,10 +90,11 @@ export default function Widget() {
           </Grid>
         </Grid>
 
-        {filteredNotifications.map((a, index) => (
-          <AlertRow key={index} alert={a} />
-        ))}
-
+        <Paper elevation={3} sx={{ overflow: "auto", maxHeight: "500px" }}>
+          {filteredNotifications.map((noty, index) => (
+            <AlertRow key={index} notification={noty} />
+          ))}
+        </Paper>
         <Grid sx={{ minHeight: "2px" }} />
       </Paper>
 

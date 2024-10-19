@@ -14,7 +14,7 @@ function HomePage() {
 
   return (
     <Fragment>
-      <Container fixed sx={{ marginTop: "20vh" }}>
+      <Container fixed sx={{ marginTop: "13vh" }}>
         <Grid
           container
           spacing={2}
