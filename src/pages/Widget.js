@@ -7,6 +7,7 @@ import AlertRow from "./AlertRow";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import { FilterAlt } from "@mui/icons-material";
 import AlertConfiguration from "./AlertConfiguration";
+import WidgetFilterModal from "../modals/WidgetFilterModal";
 export default function Widget() {
   const [alerts] = useState([
     { id: 1 },
@@ -16,10 +17,16 @@ export default function Widget() {
     { id: 5 },
   ]);
 
+  //configuration
   const [open, setOpen] = React.useState(false);
-
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
+  };
+
+  //filters
+  const [filterOpen, setFilterOpen] = React.useState(false);
+  const toggleFilter = (newOpen) => () => {
+    setFilterOpen(newOpen);
   };
 
   return (
@@ -31,6 +38,7 @@ export default function Widget() {
             backgroundColor: "#f2f2f2",
             borderRadius: "4px 4px 0px 0px",
             padding: 1,
+            marginBottom: "5px",
           }} //6042F7
         >
           <Grid size={6} p={1}>
@@ -72,7 +80,11 @@ export default function Widget() {
           </Grid>
           <Grid p={0} sx={{ textAlign: "right" }}>
             <IconButton>
-              <FilterAlt />
+              <FilterAlt
+                title="Filters configuration"
+                onClick={toggleFilter(true)}
+                aria-label="filters"
+              />
             </IconButton>
             <IconButton
               title="Alerts configuration"
@@ -84,12 +96,13 @@ export default function Widget() {
           </Grid>
         </Grid>
 
-        {alerts.map((t, index) => (
-          <AlertRow key={index} alert={t} />
+        {alerts.map((a, index) => (
+          <AlertRow key={index} alert={a} />
         ))}
         <Grid sx={{ minHeight: "2px" }} />
       </Paper>
 
+      <WidgetFilterModal open={filterOpen} onClose={toggleFilter(false)} />
       <AlertConfiguration open={open} onClose={toggleDrawer(false)} />
     </>
   );

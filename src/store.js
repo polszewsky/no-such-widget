@@ -1,9 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-
+import filterReducer from "./reducers/filterSlice";
 
 export default configureStore({
   reducer: {
-    //counter: counterReducer,
-   // homeInformations: homeInformationsReducer,
+    filter: filterReducer,
   },
 });
