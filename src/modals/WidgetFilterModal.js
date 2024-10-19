@@ -1,4 +1,3 @@
-import { Star } from "@mui/icons-material";
 import {
   Button,
   Divider,
@@ -49,11 +48,11 @@ export default function WidgetFilterModal(props) {
 
   //LIST STORTING
 
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  // const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-  const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-  };
+  //   const handleListItemClick = (event, index) => {
+  //     setSelectedIndex(index);
+  //   };
 
   return (
     <Drawer
@@ -156,7 +155,7 @@ export default function WidgetFilterModal(props) {
           <List component="nav" aria-label="secondary mailbox folder">
             <ListItemButton
               selected={filters.sort.type === true}
-              onClick={(event) => handleListItemClick(event, 1)}
+              // onClick={(event) => handleListItemClick(event, 1)}
             >
               <ListItemText primary="Category" />
               <ListItemIcon>
@@ -165,7 +164,7 @@ export default function WidgetFilterModal(props) {
             </ListItemButton>
             <ListItemButton
               selected={filters.sort.category === true}
-              onClick={(event) => handleListItemClick(event, 2)}
+              //onClick={(event) => handleListItemClick(event, 2)}
             >
               <ListItemText primary="Type" />
               <ListItemIcon>
@@ -174,7 +173,7 @@ export default function WidgetFilterModal(props) {
             </ListItemButton>
             <ListItemButton
               selected={filters.sort.dueDate === true}
-              onClick={(event) => handleListItemClick(event, 3)}
+              //onClick={(event) => handleListItemClick(event, 3)}
             >
               <ListItemText primary="Due days" />
               <ListItemIcon>
