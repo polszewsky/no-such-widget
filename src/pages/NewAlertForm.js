@@ -2,6 +2,8 @@ import React from "react";
 import { Drawer, Box, Typography, TextField, Button } from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
 import { Grid } from "@mui/system";
+import { useDispatch, useSelector } from "react-redux";
+import { notifySuccess } from "../actualAlert/actualAlertSlice";
 
 function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
   const [title, setTitle] = React.useState("");
@@ -12,6 +14,8 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
   const [client, setClient] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [url, setUrl] = React.useState("");
+
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -204,6 +208,9 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                     },
                   ]);
                   handleClose();
+                  dispatch(
+                    notifySuccess("New configuration has been created!")
+                  );
                 }}
               >
                 Save

@@ -12,8 +12,11 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ExpandMoreIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import ScreenShareIcon from "@mui/icons-material/ScreenShare";
+import { useDispatch } from "react-redux";
+import { notifyError, notifyInfo } from "../actualAlert/actualAlertSlice";
 
 function AlertConfigurationType({ configuration, configs, setConfigs }) {
+  const dispatch = useDispatch();
   return (
     <Card
       container
@@ -26,8 +29,11 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
     >
       <Accordion
         sx={{
-          width: "100%",
-          "&:hover": { color: "#ffd700", backgroundColor: "#002e3c" },
+          width: "80%",
+          "&:hover": {
+            color: "#ffd700",
+            backgroundColor: "#002e3c",
+          },
         }}
       >
         <AccordionSummary>
@@ -41,12 +47,15 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             }}
           >
             <Typography
-              sx={{ textAlign: "left", fontFamily: "bold" }}
+              sx={{
+                textAlign: "left",
+                fontFamily: "bold",
+              }}
               size="auto"
             >
               {configuration.title}
             </Typography>
-            <Grid size="auto" sx={{ justifyContent: "space-between" }}>
+            {/* <Grid size="auto" sx={{ justifyContent: "space-between" }}>
               <Tooltip title="Delete">
                 <DeleteForeverIcon
                   title="Remove configuration"
@@ -58,12 +67,22 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
                 />
               </Tooltip>
               <Tooltip title="Edit">
-                <EditIcon title="Edit configuration" />
+                <EditIcon
+                  title="Edit configuration"
+                  onClick={() =>
+                    dispatch(notifyError("Sorry, just proof of concept"))
+                  }
+                />
               </Tooltip>
               <Tooltip title="Share configuration">
-                <ScreenShareIcon title="Edit configuration" />
+                <ScreenShareIcon
+                  title="Edit configuration"
+                  onClick={() =>
+                    dispatch(notifyError("Sorry, just proof of concept"))
+                  }
+                />
               </Tooltip>
-            </Grid>
+            </Grid> */}
           </Grid>
         </AccordionSummary>
         <AccordionDetails>
@@ -189,6 +208,59 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
           </Grid>
         </AccordionDetails>
       </Accordion>
+
+      <Grid
+        size="auto"
+        sx={{
+          justifyContent: "space-between",
+          display: "flex",
+          width: "auto",
+          lenght: "auto",
+        }}
+      >
+        <Tooltip title="Delete">
+          <DeleteForeverIcon
+            sx={{
+              "&:hover": {
+                cursor: "pointer",
+              },
+            }}
+            title="Remove configuration"
+            onClick={() => {
+              setConfigs(
+                configs.filter((a) => a.title !== configuration.title)
+              );
+              dispatch(notifyInfo("Configuration has been removed!"));
+            }}
+          />
+        </Tooltip>
+        <Tooltip title="Edit">
+          <EditIcon
+            sx={{
+              "&:hover": {
+                cursor: "pointer",
+              },
+            }}
+            title="Edit configuration"
+            onClick={() =>
+              dispatch(notifyError("Sorry, just proof of concept"))
+            }
+          />
+        </Tooltip>
+        <Tooltip title="Share configuration">
+          <ScreenShareIcon
+            sx={{
+              "&:hover": {
+                cursor: "pointer",
+              },
+            }}
+            title="Edit configuration"
+            onClick={() =>
+              dispatch(notifyError("Sorry, just proof of concept"))
+            }
+          />
+        </Tooltip>
+      </Grid>
     </Card>
   );
 }

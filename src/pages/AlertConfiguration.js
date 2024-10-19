@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Box, Switch, IconButton, Drawer } from "@mui/material";
 import { Grid } from "@mui/system";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 import AlertConfigurationType from "./AlertConfigurationType";
 import NewAlertForm from "./NewAlertForm";
 import { alertConfigurationData } from "../data/AlertConfigurationData";
@@ -69,7 +69,6 @@ function AlertConfiguration(props) {
             );
           })}
         </Grid>
-        <hr />
         <Grid
           sx={{
             display: "flex",
