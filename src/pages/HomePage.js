@@ -7,12 +7,12 @@ import Widget from "./Widget";
 
 function HomePage() {
   const dispatch = useDispatch();
-  const { type } = useSelector((store) => store.filter.filters);
+  const { filters } = useSelector((store) => store.filter);
   const { allNotifications } = useSelector((store) => store.notificationsList);
 
   useEffect(() => {
-    dispatch(getFilteredNotifications(type));
-  }, [dispatch, type, allNotifications]);
+    dispatch(getFilteredNotifications(filters));
+  }, [dispatch, filters, allNotifications]);
 
   const [showList, setShowList] = React.useState(true); // CHANGE TO FALSE FOR PRESENTATION
 

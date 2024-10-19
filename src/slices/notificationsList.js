@@ -14,15 +14,26 @@ export const notificationsListSlice = createSlice({
   },
 
   reducers: {
-    markAllAsRead: (state, action) => {
-      //do nothing
+    markAllAsRead: (state) => {
+      // Iterate through every object in the array and update the "one" field
+      state.allNotifications.forEach((item) => {
+        item.read = true;
+      });
     },
     getFilteredNotifications: (state, action) => {
-      const activeFilter = action.payload === "active" ? true : false;
+      const filters = action.payload;
+
+      const activeFilter = filters.type === "active" ? true : false;
 
       state.filteredNotifications = state.allNotifications.filter(
         (not) => not.archived === !activeFilter
       );
+
+      if (filters.sort.dueDate === false) {
+        state.filteredNotifications = state.filteredNotifications.filter(
+          (not) => not.type === filters.sort.type
+        );
+      }
     },
     loadSelectedNotification: (state, action) => {
       const selectedId = action.payload.id;

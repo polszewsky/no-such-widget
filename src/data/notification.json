@@ -30,7 +30,7 @@
         "approval": false
       }
     ],
-    "url": "collabothon/doc/nosuchwidgetexception/1",
+    "url": "/collabothon/document/1",
     "archived": false,
     "due": 2
   },
@@ -44,7 +44,8 @@
     "category": "external",
     "read": true,
     "archived": false,
-    "due": 3
+    "due": 3,
+    "url": "/collabothon/document/1"
   },
   {
     "title": "Potential Fraudulent Activity Detected: #FAD-10-2024-XYZ",
@@ -101,7 +102,7 @@
         "approval": false
       }
     ],
-    "url": "collabothon/doc/nosuchwidgetexception/2",
+    "url": "/collabothon/document/1",
     "archived": false,
     "due": 7
   },

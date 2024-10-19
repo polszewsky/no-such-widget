@@ -16,12 +16,13 @@ import {
   markNotificationAsRead,
 } from "../slices/notificationsList";
 import { notifyInfo } from "../actualAlert/actualAlertSlice";
+import { useNavigate } from "react-router";
 
 export default function AlertDetails({ handleOpen, closeAction }) {
   const { selectedNotification = { person: [] } } = useSelector(
     (store) => store.notificationsList
   );
-
+  let history = useNavigate();
   const dispatch = useDispatch();
 
   const [openModal, setOpenModal] = useState(false);
@@ -66,6 +67,7 @@ export default function AlertDetails({ handleOpen, closeAction }) {
                 cursor: "pointer",
               },
             }}
+            onClick={() => history(`${selectedNotification?.url}`)}
           >
             <Grid>
               <OpenInNewIcon />
@@ -74,7 +76,7 @@ export default function AlertDetails({ handleOpen, closeAction }) {
               <Typography
                 sx={{ fontWeight: "bold", fontSize: "12pt", color: "inherit" }}
               >
-                Go to the document
+                Go to the Linked Entity
               </Typography>
             </Grid>
           </Grid>

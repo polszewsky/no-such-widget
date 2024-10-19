@@ -30,6 +30,7 @@ export default function AlertRow(props) {
           borderLeft: notification?.read
             ? "4px solid #fff"
             : "4px solid #D32F2Fdd",
+          cursor: "pointer",
         }}
       >
         <Grid

@@ -6,9 +6,9 @@ export const filterSlice = createSlice({
     filters: {
       type: "active", // active - archived
       sort: {
-        type: false,
+        type: "",
         dueDate: true,
-        category: false,
+        category: "",
       },
     },
   },
@@ -17,9 +17,13 @@ export const filterSlice = createSlice({
     updateFilterActiveType: (state, action) => {
       state.filters.type = action.payload.type;
     },
+    updateFiltersSortBy: (state, action) => {
+      state.filters.sort = action.payload;
+    },
   },
 });
 
-export const { updateFilterActiveType } = filterSlice.actions;
+export const { updateFilterActiveType, updateFiltersSortBy } =
+  filterSlice.actions;
 
 export default filterSlice.reducer;

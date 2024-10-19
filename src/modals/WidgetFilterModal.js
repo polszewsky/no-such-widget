@@ -17,10 +17,12 @@ import {
 import { Grid } from "@mui/system";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateFilterActiveType } from "../slices/filterSlice";
+import {
+  updateFilterActiveType,
+  updateFiltersSortBy,
+} from "../slices/filterSlice";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import MergeTypeIcon from "@mui/icons-material/MergeType";
-import { notifyError } from "../actualAlert/actualAlertSlice";
 import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
 
 export default function WidgetFilterModal(props) {
@@ -60,6 +62,16 @@ export default function WidgetFilterModal(props) {
 
   const handleClick = () => {
     setListOpen(!listOpen);
+  };
+
+  const handleTypeChange = (type) => {
+    const sort = { type: type, dueDate: false, category: "" };
+    dispatch(updateFiltersSortBy(sort));
+  };
+
+  const handleDueChange = (type) => {
+    const sort = { type: "", dueDate: true, category: "" };
+    dispatch(updateFiltersSortBy(sort));
   };
 
   return (
@@ -162,35 +174,51 @@ export default function WidgetFilterModal(props) {
 
           <List component="nav" aria-label="secondary mailbox folder">
             <ListItemButton
-              selected={filters.sort.type === true}
-              // onClick={(event) => handleListItemClick(event, 1)}
+              selected={filters.sort.type !== ""}
+              onClick={() => handleClick()}
             >
-              <ListItemText primary="Category" />
+              <ListItemText primary="Type" />
               <ListItemIcon>
                 {listOpen ? <ExpandLess /> : <ExpandMore />}
               </ListItemIcon>
             </ListItemButton>
             <Collapse in={listOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
+                <ListItemButton
+                  sx={{ pl: 4 }}
+                  selected={filters.sort.type === "Regulatory"}
+                  onClick={() => handleTypeChange("Regulatory")}
+                >
                   <ListItemIcon>
                     <StarBorder />
                   </ListItemIcon>
                   <ListItemText primary="Regulatory" />
                 </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }}>
+                <ListItemButton
+                  sx={{ pl: 4 }}
+                  selected={filters.sort.type === "Urgent"}
+                  onClick={() => handleTypeChange("Urgent")}
+                >
                   <ListItemIcon>
                     <StarBorder />
                   </ListItemIcon>
                   <ListItemText primary="Urgent" />
                 </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }}>
+                <ListItemButton
+                  sx={{ pl: 4 }}
+                  selected={filters.sort.type === "Financial"}
+                  onClick={() => handleTypeChange("Financial")}
+                >
                   <ListItemIcon>
                     <StarBorder />
                   </ListItemIcon>
                   <ListItemText primary="Financial" />
                 </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }}>
+                <ListItemButton
+                  sx={{ pl: 4 }}
+                  selected={filters.sort.type === "Transaction Approval"}
+                  onClick={() => handleTypeChange("Transaction Approval")}
+                >
                   <ListItemIcon>
                     <StarBorder />
                   </ListItemIcon>
@@ -199,17 +227,17 @@ export default function WidgetFilterModal(props) {
               </List>
             </Collapse>
             <ListItemButton
-              selected={filters.sort.category === true}
+              selected={filters.sort.category !== ""}
               //onClick={(event) => handleListItemClick(event, 2)}
             >
-              <ListItemText primary="Type" />
+              <ListItemText primary="Category" />
               <ListItemIcon>
                 <MergeTypeIcon />
               </ListItemIcon>
             </ListItemButton>
             <ListItemButton
               selected={filters.sort.dueDate === true}
-              //onClick={(event) => handleListItemClick(event, 3)}
+              onClick={() => handleDueChange()}
             >
               <ListItemText primary="Due days" />
               <ListItemIcon>
@@ -229,12 +257,7 @@ export default function WidgetFilterModal(props) {
             }}
           >
             <Grid size={"auto"}>
-              <Button
-                variant="contained"
-                onClick={() =>
-                  dispatch(notifyError("Sorry, just proof of concept"))
-                }
-              >
+              <Button variant="contained" onClick={onClose}>
                 Sort
               </Button>
             </Grid>

@@ -9,6 +9,7 @@ import AlertConfiguration from "./AlertConfiguration";
 import WidgetFilterModal from "../modals/WidgetFilterModal";
 import AlertRow from "./AlertRow";
 import { useDispatch, useSelector } from "react-redux";
+import { markAllAsRead } from "../slices/notificationsList";
 import { notifyInfo } from "../actualAlert/actualAlertSlice";
 
 export default function Widget({ showList = false }) {
@@ -76,9 +77,10 @@ export default function Widget({ showList = false }) {
               color="#328050"
               size="small"
               variant="text"
-              onClick={() =>
-                dispatch(notifyInfo("Sorry, This is Proof of Concept :)"))
-              }
+              onClick={() => {
+                dispatch(markAllAsRead());
+                dispatch(notifyInfo("Marked all notifications as read"));
+              }}
             >
               Mark all as read
             </Button>
