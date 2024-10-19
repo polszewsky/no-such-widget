@@ -68,7 +68,6 @@ function AlertConfiguration(props) {
             );
           })}
         </Grid>
-        <hr />
         <Grid
           sx={{
             display: "flex",
