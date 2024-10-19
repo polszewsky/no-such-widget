@@ -6,7 +6,7 @@ export const filterSlice = createSlice({
     filters: {
       type: "active", // active - archived
       sort: {
-        type: false,
+        type: true,
         dueDate: false,
         category: false,
       },
@@ -15,7 +15,7 @@ export const filterSlice = createSlice({
 
   reducers: {
     updateFilterActiveType: (state, action) => {
-      state.active = action.payload;
+      state.filters.type = action.payload.type;
     },
   },
 });
