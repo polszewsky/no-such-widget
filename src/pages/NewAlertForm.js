@@ -8,31 +8,43 @@ import {
   Button,
 } from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
-
-const styleModal = {
-  position: "absolute",
-  top: 0,
-  right: 0,
-  width: 500,
-  height: "100%",
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import { Grid } from "@mui/system";
 
 function NewAlertForm({ handleOpen, handleClose }) {
   return (
     <div>
-      <Container>
+      <Grid>
         <Drawer
           anchor="right"
           open={handleOpen}
           onClose={handleClose}
-          PaperProps={{ sx: { width: 500 } }}
+          PaperProps={{ sx: { width: 450 } }}
         >
-          <Box sx={styleModal}>
-            <Container
+          <Box>
+            <Grid
+              container
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#002e3c",
+                borderRadius: "4px 4px 0px 0px",
+                padding: 2,
+                marginBottom: 2,
+              }}
+            >
+              <Typography
+                sx={{
+                  variant: "title",
+                  fontSize: 30,
+                  fontFamily: "bold",
+                  color: "#ffd700",
+                }}
+              >
+                New custom notification
+              </Typography>
+            </Grid>
+            <Grid
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -40,39 +52,48 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 padding: 1,
               }}
             >
-              <Typography sx={{ fontSize: 24 }}>
-                Add new custom alert
-              </Typography>
-            </Container>
-            <Container
+              <TextField
+                id="outlined-basic"
+                label="title"
+                variant="outlined"
+                sx={{ width: "80%" }}
+              />
+            </Grid>
+            <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
               <TextField
                 id="outlined-basic"
-                label="Alert name"
+                label="priority"
                 variant="outlined"
+                sx={{ width: "80%" }}
               />
-            </Container>
-            <Container
+            </Grid>
+            <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
-              <TextField id="outlined-basic" label="type" variant="outlined" />
-            </Container>
-            <Container
+              <TextField
+                id="outlined-basic"
+                label="type"
+                variant="outlined"
+                sx={{ width: "80%" }}
+              />
+            </Grid>
+            <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
@@ -80,41 +101,29 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 id="outlined-basic"
                 label="subtype"
                 variant="outlined"
+                sx={{ width: "80%" }}
               />
-            </Container>
-            <Container
+            </Grid>
+            <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
               <TextField
                 id="outlined-basic"
-                label="frequency"
+                label="trigger condition"
                 variant="outlined"
+                sx={{ width: "80%" }}
               />
-            </Container>
-            <Container
+            </Grid>
+            <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
-                padding: 1,
-              }}
-            >
-              <TextField
-                id="outlined-basic"
-                label="Client"
-                variant="outlined"
-              />
-            </Container>
-            <Container
-              sx={{
-                display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
@@ -122,47 +131,70 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 id="outlined-basic"
                 label="Client"
                 variant="outlined"
+                sx={{ width: "80%" }}
               />
-            </Container>
-            <Container
+            </Grid>
+            <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
-              <Textarea placeholder="Description..." minRows={2} />
-            </Container>
-            <Container
+              <Textarea
+                placeholder="Description..."
+                minRows={2}
+                sx={{ width: "80%" }}
+              />
+            </Grid>
+            <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 1,
+                marginBottom: 2,
+              }}
+            >
+              <Textarea placeholder="URL" minRows={2} sx={{ width: "80%" }} />
+            </Grid>
+            <Grid
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-around",
                 padding: 1,
               }}
             >
-              <Textarea placeholder="URL" minRows={2} />
-            </Container>
-
-            <Container
-              sx={{
-                display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
-                padding: 1,
-              }}
-            >
-              <Button variant="contained" color="success" onClick={handleClose}>
-                Save alert
+              <Button
+                variant="contained"
+                sx={{
+                  color: "#002e3c",
+                  backgroundColor: "#ffd700",
+                  fontWeight: "bold",
+                  minWidth: 100,
+                }}
+                onClick={handleClose}
+              >
+                Save
               </Button>
-              <Button variant="contained" color="error" onClick={handleClose}>
+              <Button
+                variant="contained"
+                sx={{
+                  color: "#002e3c",
+                  backgroundColor: "#ffd700",
+                  fontWeight: "bold",
+                  minWidth: 100,
+                }}
+                onClick={handleClose}
+              >
                 Cancel
               </Button>
-            </Container>
+            </Grid>
           </Box>
         </Drawer>
-      </Container>
+      </Grid>
     </div>
   );
 }
