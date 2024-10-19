@@ -3,7 +3,6 @@ import React, { Fragment } from "react";
 import Widget from "./Widget";
 
 function HomePage() {
-
   return (
     <Fragment>
       <Container fixed sx={{ marginTop: "20vh" }}>
@@ -14,6 +13,7 @@ function HomePage() {
           sx={{
             justifyContent: "center",
             alignItems: "center",
+            marginBottom: "1rem",
           }}
         >
           <Grid size={8}>
