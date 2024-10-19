@@ -1,11 +1,11 @@
-import { Badge, IconButton, Paper, Typography } from "@mui/material";
+import { Badge, Button, IconButton, Paper, Typography } from "@mui/material";
 import { Grid } from "@mui/system";
 import React, { useState } from "react";
 
 import SettingsIcon from "@mui/icons-material/Settings";
 import AlertRow from "./AlertRow";
-import { Mail } from "@mui/icons-material";
-
+import { Delete, Mail } from "@mui/icons-material";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
 export default function Widget() {
   const [alerts] = useState([{ id: 1 }, { id: 2 }]);
 
@@ -17,7 +17,7 @@ export default function Widget() {
       >
         <Grid size={8} p={1}>
           <Typography sx={{ fontWeight: "bold", color: "#666" }}>
-            Notification
+            Notifications
           </Typography>
         </Grid>
         <Grid
@@ -25,7 +25,14 @@ export default function Widget() {
           sx={{ textAlign: "right", fontWeight: "bold", color: "#328050" }}
           p={1}
         >
-          Mark all as read
+          <Button
+            startIcon={<DoneAllIcon />}
+            color="#328050"
+            size="small"
+            variant="text"
+          >
+            Mark all as read
+          </Button>
         </Grid>
         <Grid size={1} p={0} sx={{ textAlign: "right" }}>
           <IconButton aria-label="delete">
