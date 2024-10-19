@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./store";
 import { Provider } from "react-redux";
 import HomePage from "./pages/HomePage";
+import MockDocumentLoad from "./mockLandings/MockDocumentLoan";
 import { Route, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import { ActualAlert } from "./actualAlert/ActualAlert";
@@ -18,6 +19,10 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route
+            path="/collabothon/document/1"
+            element={<MockDocumentLoad />}
+          />
         </Routes>
       </BrowserRouter>
       <ActualAlert />

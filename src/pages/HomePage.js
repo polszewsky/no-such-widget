@@ -14,7 +14,7 @@ function HomePage() {
     dispatch(getFilteredNotifications(type));
   }, [dispatch, type, allNotifications]);
 
-  const [showList, setShowList] = React.useState(false);
+  const [showList, setShowList] = React.useState(true); // CHANGE TO FALSE FOR PRESENTATION
 
   const handleChange = () => {
     setShowList(!showList);

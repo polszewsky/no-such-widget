@@ -15,7 +15,7 @@ import { archiveSelectedNotification } from "../slices/notificationsList";
 import { notifyInfo } from "../actualAlert/actualAlertSlice";
 
 export default function AlertDetails({ handleOpen, closeAction }) {
-  const { selectedNotification = {} } = useSelector(
+  const { selectedNotification = { person: [] } } = useSelector(
     (store) => store.notificationsList
   );
 
@@ -48,26 +48,34 @@ export default function AlertDetails({ handleOpen, closeAction }) {
             {selectedNotification?.id} | {selectedNotification?.title}
           </Typography>
         </Grid>
-        <Grid
-          container
-          spacing={1}
-          size={12}
-          sx={{
-            padding: "20px",
-            backgroundColor: "#b5cef777",
-          }}
-        >
-          <Grid>
-            <OpenInNewIcon />
+        {selectedNotification?.url && (
+          <Grid
+            container
+            spacing={1}
+            size={12}
+            sx={{
+              padding: "20px",
+              backgroundColor: "#b5cef777",
+
+              color: "#333",
+              "&:hover": {
+                color: "blue",
+                cursor: "pointer",
+              },
+            }}
+          >
+            <Grid>
+              <OpenInNewIcon />
+            </Grid>
+            <Grid>
+              <Typography
+                sx={{ fontWeight: "bold", fontSize: "12pt", color: "inherit" }}
+              >
+                Go to the document
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid>
-            <Typography
-              sx={{ fontWeight: "bold", fontSize: "12pt", color: "#333" }}
-            >
-              Go to the document
-            </Typography>
-          </Grid>
-        </Grid>
+        )}
         <Grid size={12}>
           <Timeline position="left">
             <TimelineItem>
@@ -101,38 +109,64 @@ export default function AlertDetails({ handleOpen, closeAction }) {
             alignItems: "center",
           }}
         >
-          <Grid>
-            <Chip
-              sx={{
-                backgroundColor: "green",
-                fontSize: "14pt",
-                padding: "1rem",
-              }}
-              avatar={
-                <Avatar
-                  sx={{ width: 56, height: 56 }}
-                  alt="Natacha"
-                  src="https://avatar.iran.liara.run/public/45"
+          {/* {selectedNotification.person.map((person, index) => ((
+            <Grid>
+                <Chip
+                  sx={{
+                    backgroundColor: "green",
+                    fontSize: "14pt",
+                    padding: "1rem",
+                  }}
+                  avatar={
+                    <Avatar
+                      sx={{ width: 56, height: 56 }}
+                      alt="Natacha"
+                      src="https://avatar.iran.liara.run/public/45"
+                    />
+                  }
+                  label={person.fullname}
+                  variant="outlined"
                 />
-              }
-              label="Mark Spielberg"
-              variant="outlined"
-            />
-          </Grid>
-          <Grid>
-            <Chip
-              sx={{ backgroundColor: "red", fontSize: "14pt", padding: "1rem" }}
-              avatar={
-                <Avatar
-                  sx={{ width: 56, height: 56 }}
-                  alt="Natacha"
-                  src="https://avatar.iran.liara.run/public/48"
-                />
-              }
-              label="Tom Spencer"
-              variant="outlined"
-            />
-          </Grid>
+              </Grid>
+          ))} */}
+
+          {selectedNotification?.person?.map((person, index) => (
+            <Grid>
+              <Chip
+                sx={{
+                  backgroundColor: person?.approval ? "#388E3C99" : "#D32F2F99",
+                  fontSize: "14pt",
+                  padding: "1rem",
+                  paddingTop: "2rem",
+                  paddingBottom: "2rem",
+                }}
+                avatar={
+                  <Avatar
+                    sx={{ width: 56, height: 56 }}
+                    alt="Natacha"
+                    src="https://avatar.iran.liara.run/public/45"
+                  />
+                }
+                label={
+                  <>
+                    <Typography>{person?.fullname}</Typography>
+                    {!person?.approval ? (
+                      <>
+                        <Typography variant="overline">
+                          waiting for approval
+                        </Typography>
+                      </>
+                    ) : (
+                      <>
+                        <Typography variant="overline">approved</Typography>
+                      </>
+                    )}
+                  </>
+                }
+                variant="outlined"
+              />
+            </Grid>
+          ))}
         </Grid>
         <Grid size={10} offset={{ md: 1 }} sx={{ marginTop: "1rem" }}>
           <Typography>

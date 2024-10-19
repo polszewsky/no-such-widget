@@ -52,7 +52,7 @@ export default function AlertRow(props) {
                 <Chip
                   color="error"
                   size="small"
-                  label="due 4 days"
+                  label={`Due ${notification?.due ?? "-"} days`}
                   sx={{ borderRadius: "2px", opacity: "92%" }}
                 />
               )}
