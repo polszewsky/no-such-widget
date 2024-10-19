@@ -1,11 +1,33 @@
-import { Typography } from '@mui/material';
-import React from 'react';
+import { Typography } from "@mui/material";
+import { Grid } from "@mui/system";
+import React from "react";
 
-function AlertConfigurationType({number}) {
+function AlertConfigurationType({ configuration }) {
   return (
-    <Typography sx={{padding: 2}}>
-        Alert Configuration number {number}
-    </Typography>
+    <Grid
+      container
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}
+    >
+      <Grid sx={{ padding: 1 }}>
+        <Typography size={2}>{configuration.title}</Typography>
+      </Grid>
+      <Grid>
+        <Typography size={2}>{configuration.priority}</Typography>
+      </Grid>
+      <Grid>
+        <Typography size={2}>{configuration.type}</Typography>
+      </Grid>
+      <Grid>
+        <Typography size={2}>{configuration.subtype}</Typography>
+      </Grid>
+      <Grid>
+        <Typography size={2}>{configuration.triggerCondition}</Typography>
+      </Grid>
+    </Grid>
   );
 }
 
