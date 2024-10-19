@@ -3,11 +3,12 @@ import { Grid } from "@mui/system";
 import React, { useState } from "react";
 
 import SettingsIcon from "@mui/icons-material/Settings";
-import AlertRow from "./AlertRow";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import { FilterAlt } from "@mui/icons-material";
 import AlertConfiguration from "./AlertConfiguration";
 import WidgetFilterModal from "../modals/WidgetFilterModal";
+import AlertRow from "./AlertRow";
+
 export default function Widget() {
   const [alerts] = useState([
     { id: 1 },
