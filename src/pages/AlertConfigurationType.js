@@ -28,7 +28,7 @@ function AlertConfigurationType({ configuration }) {
         <AccordionSummary>
           <Grid sx={{ padding: 1, width: "100%", alignItems: "center" }}>
             <Typography
-              sx={{ textAlign: "center", fontFamily: "bold" }}
+              sx={{ textAlign: "left", fontFamily: "bold" }}
               size="auto"
             >
               {configuration.title}
@@ -41,10 +41,11 @@ function AlertConfigurationType({ configuration }) {
             sx={{
               display: "flex",
               alignItems: "left",
+              paddingBottom: 1,
             }}
           >
             <Grid size={6}>
-              <Typography>Priority</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Priority</Typography>
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
@@ -57,10 +58,11 @@ function AlertConfigurationType({ configuration }) {
             sx={{
               display: "flex",
               alignItems: "left",
+              paddingBottom: 1,
             }}
           >
             <Grid size={6}>
-              <Typography>Type</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Type</Typography>
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
@@ -73,10 +75,11 @@ function AlertConfigurationType({ configuration }) {
             sx={{
               display: "flex",
               alignItems: "left",
+              paddingBottom: 1,
             }}
           >
             <Grid size={6}>
-              <Typography>Subtype</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Subtype</Typography>
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
@@ -89,10 +92,13 @@ function AlertConfigurationType({ configuration }) {
             sx={{
               display: "flex",
               alignItems: "left",
+              paddingBottom: 1,
             }}
           >
             <Grid size={6}>
-              <Typography>Trigger Condition</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>
+                Trigger Condition
+              </Typography>
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
@@ -105,10 +111,11 @@ function AlertConfigurationType({ configuration }) {
             sx={{
               display: "flex",
               alignItems: "left",
+              paddingBottom: 1,
             }}
           >
             <Grid size={6}>
-              <Typography>Client</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Client</Typography>
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
@@ -124,11 +131,11 @@ function AlertConfigurationType({ configuration }) {
             }}
           >
             <Grid size={6}>
-              <Typography>Description</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Url</Typography>
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
-                {configuration.description}
+                {configuration.url}
               </Typography>
             </Grid>
           </Grid>
@@ -137,14 +144,15 @@ function AlertConfigurationType({ configuration }) {
             sx={{
               display: "flex",
               alignItems: "left",
+              paddingBottom: 1,
             }}
           >
             <Grid size={6}>
-              <Typography>Url</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Description</Typography>
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
-                {configuration.url}
+                {configuration.description}
               </Typography>
             </Grid>
           </Grid>
