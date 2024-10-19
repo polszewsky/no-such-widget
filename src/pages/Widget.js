@@ -15,9 +15,12 @@ export default function Widget() {
     { id: 4 },
     { id: 5 },
   ]);
+
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
 
   return (
     <>
@@ -73,8 +76,8 @@ export default function Widget() {
             </IconButton>
             <IconButton
               title="Alerts configuration"
-              onClick={handleOpen}
-              aria-label="delete"
+              onClick={toggleDrawer(true)}
+              aria-label="settings"
             >
               <SettingsIcon />
             </IconButton>
@@ -87,7 +90,7 @@ export default function Widget() {
         <Grid sx={{ minHeight: "2px" }} />
       </Paper>
 
-      <AlertConfiguration handleOpen={open} handleClose={handleClose} />
+      <AlertConfiguration open={open} onClose={toggleDrawer(false)} />
     </>
   );
 }
