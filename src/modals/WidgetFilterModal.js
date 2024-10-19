@@ -71,7 +71,7 @@ export default function WidgetFilterModal(props) {
           }}
         >
           <Typography
-            sx={{ fontWeight: "bold", fontSize: "16pt", color: "yellow" }}
+            sx={{ fontWeight: "bold", fontSize: "16pt", color: "#ffd700" }}
           >
             Filters & Groups
           </Typography>

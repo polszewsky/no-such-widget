@@ -23,7 +23,7 @@ function AlertConfiguration(props) {
       anchor="right"
       open={open}
       onClose={onClose}
-      PaperProps={{ sx: { width: 1000 } }}
+      PaperProps={{ sx: { width: 450 } }}
     >
       <Box>
         <Grid
@@ -32,13 +32,18 @@ function AlertConfiguration(props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#778899",
+            backgroundColor: "#002e3c",
             borderRadius: "4px 4px 0px 0px",
             padding: 1,
           }}
         >
           <Typography
-            sx={{ variant: "title", fontSize: 30, fontFamily: "bold" }}
+            sx={{
+              variant: "title",
+              fontSize: 30,
+              fontFamily: "bold",
+              color: "#ffd700",
+            }}
           >
             Custom notifications
           </Typography>
@@ -46,7 +51,7 @@ function AlertConfiguration(props) {
             title="Add new custom alert"
             onClick={() => setOpen(true)}
           >
-            <AddCircleOutlineIcon style={{ fontSize: 48 }} />
+            <AddCircleOutlineIcon style={{ fontSize: 38, color: "#ffd700" }} />
           </IconButton>
           <NewAlertForm
             handleOpen={newOpen}
@@ -59,28 +64,13 @@ function AlertConfiguration(props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            backgroundColor: "#f2f2f2",
+            backgroundColor: "#D3D3D3",
             borderRadius: "4px 4px 0px 0px",
             padding: 2,
           }}
         >
           <Grid size="auto">
             <Typography>Title</Typography>
-          </Grid>
-          <Grid size="auto">
-            <Typography>Priority</Typography>
-          </Grid>
-          <Grid size="auto">
-            <Typography>Type</Typography>
-          </Grid>
-          <Grid size="auto">
-            <Typography>Subtype</Typography>
-          </Grid>
-          <Grid size="auto">
-            <Typography>TriggerCondition</Typography>
-          </Grid>
-          <Grid size="auto">
-            <Typography>Description</Typography>
           </Grid>
         </Grid>
         <Grid>
