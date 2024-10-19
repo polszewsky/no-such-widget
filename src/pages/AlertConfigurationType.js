@@ -10,6 +10,8 @@ import { Grid } from "@mui/system";
 import React from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ExpandMoreIcon from "@mui/icons-material/DeleteForever";
+import EditIcon from "@mui/icons-material/Edit";
+import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 
 function AlertConfigurationType({ configuration, configs, setConfigs }) {
   return (
@@ -19,7 +21,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
         display: "flex",
         alignItems: "center",
         postion: "absolute",
-        width: 460,
+        width: 550,
       }}
     >
       <Accordion
@@ -44,16 +46,24 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             >
               {configuration.title}
             </Typography>
-            <Tooltip title="Delete">
-              <DeleteForeverIcon
-                title="Remove configuration"
-                onClick={() => {
-                  setConfigs(
-                    configs.filter((a) => a.title != configuration.title)
-                  );
-                }}
-              />
-            </Tooltip>
+            <Grid size="auto" sx={{ justifyContent: "space-between" }}>
+              <Tooltip title="Delete">
+                <DeleteForeverIcon
+                  title="Remove configuration"
+                  onClick={() => {
+                    setConfigs(
+                      configs.filter((a) => a.title !== configuration.title)
+                    );
+                  }}
+                />
+              </Tooltip>
+              <Tooltip title="Edit">
+                <EditIcon title="Edit configuration" />
+              </Tooltip>
+              <Tooltip title="Share configuration">
+                <ScreenShareIcon title="Edit configuration" />
+              </Tooltip>
+            </Grid>
           </Grid>
         </AccordionSummary>
         <AccordionDetails>

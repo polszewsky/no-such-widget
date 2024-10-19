@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Box, Switch, IconButton, Drawer } from "@mui/material";
 import { Grid } from "@mui/system";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import EditIcon from '@mui/icons-material/Edit';
 import AlertConfigurationType from "./AlertConfigurationType";
 import NewAlertForm from "./NewAlertForm";
 import { alertConfigurationData } from "../data/AlertConfigurationData";
@@ -20,7 +21,7 @@ function AlertConfiguration(props) {
       anchor="right"
       open={open}
       onClose={onClose}
-      PaperProps={{ sx: { width: 450 } }}
+      PaperProps={{ sx: { width: 550 } }}
     >
       <Box>
         <Grid
