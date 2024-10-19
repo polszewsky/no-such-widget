@@ -4,11 +4,14 @@ import {
   AccordionSummary,
   Accordion,
   AccordionDetails,
+  Tooltip,
 } from "@mui/material";
 import { Grid } from "@mui/system";
 import React from "react";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import ExpandMoreIcon from "@mui/icons-material/DeleteForever";
 
-function AlertConfigurationType({ configuration }) {
+function AlertConfigurationType({ configuration, configs, setConfigs }) {
   return (
     <Card
       container
@@ -16,7 +19,7 @@ function AlertConfigurationType({ configuration }) {
         display: "flex",
         alignItems: "center",
         postion: "absolute",
-        width: 450,
+        width: 460,
       }}
     >
       <Accordion
@@ -26,13 +29,31 @@ function AlertConfigurationType({ configuration }) {
         }}
       >
         <AccordionSummary>
-          <Grid sx={{ padding: 1, width: "100%", alignItems: "center" }}>
+          <Grid
+            sx={{
+              display: "flex",
+              padding: 1,
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
             <Typography
               sx={{ textAlign: "left", fontFamily: "bold" }}
               size="auto"
             >
               {configuration.title}
             </Typography>
+            <Tooltip title="Delete">
+              <DeleteForeverIcon
+                title="Remove configuration"
+                onClick={() => {
+                  setConfigs(
+                    configs.filter((a) => a.title != configuration.title)
+                  );
+                }}
+              />
+            </Tooltip>
           </Grid>
         </AccordionSummary>
         <AccordionDetails>

@@ -62,6 +62,8 @@ function AlertConfiguration(props) {
             return (
               <AlertConfigurationType
                 configuration={configuration}
+                configs={alertConfigs}
+                setConfigs={setAlertConfigs}
               ></AlertConfigurationType>
             );
           })}
