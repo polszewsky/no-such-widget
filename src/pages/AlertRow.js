@@ -1,4 +1,4 @@
-import { Alert, Chip, Typography } from "@mui/material";
+import { Alert, Chip, Typography, Button } from "@mui/material";
 import { Grid } from "@mui/system";
 import React from "react";
 import InfoIcon from '@mui/icons-material/Info';
@@ -88,6 +88,9 @@ export default function AlertRow(props) {
                 >
                   2024-12-12
                 </Typography>
+                <Button onClick={handleOpen} variant="contained">
+                  DEtails
+                </Button>
               </Grid>
             </Grid>
 
@@ -113,6 +116,8 @@ export default function AlertRow(props) {
         </Grid>
       </Grid>
       <hr style={{ borderColor: "#fff" }} />
+      
+      <AlertDetails handleOpen={open} handleClose={handleClose}></AlertDetails>
     </>
   );
 }
