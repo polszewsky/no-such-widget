@@ -1,9 +1,15 @@
 import { Alert, Chip, Typography } from "@mui/material";
 import { Grid } from "@mui/system";
 import React from "react";
+import InfoIcon from '@mui/icons-material/Info';
+import AlertDetails from "./AlertDetails";
 
 export default function AlertRow(props) {
   const { alert = {} } = props;
+
+  const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
   return (
     <>
