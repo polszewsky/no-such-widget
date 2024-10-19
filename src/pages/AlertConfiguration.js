@@ -5,6 +5,8 @@ import AlertConfigurationType from "./AlertConfigurationType";
 import NewAlertForm from "./NewAlertForm";
 import { alertConfigurationData } from "../data/AlertConfigurationData";
 import { OpenInNewOff } from "@mui/icons-material";
+import { alpha, styled } from "@mui/material/styles";
+import { yellow } from "@mui/material/colors";
 
 function AlertConfiguration(props) {
   const { open, onClose } = props;
@@ -14,6 +16,18 @@ function AlertConfiguration(props) {
   const [alertConfigs, setAlertConfigs] = React.useState(
     alertConfigurationData.configurations
   );
+
+  const YellowSwitch = styled(Switch)(({ theme }) => ({
+    "& .MuiSwitch-switchBase.Mui-checked": {
+      color: yellow[600],
+      "&:hover": {
+        backgroundColor: alpha(yellow[600], theme.palette.action.hoverOpacity),
+      },
+    },
+    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+      backgroundColor: yellow[600],
+    },
+  }));
 
   return (
     <Drawer
@@ -65,29 +79,32 @@ function AlertConfiguration(props) {
         </Grid>
       </Grid>
 
-      <Box>
-        <Grid>
-          {alertConfigs.map((configuration) => {
-            return (
-              <AlertConfigurationType
-                configuration={configuration}
-                configs={alertConfigs}
-                setConfigs={setAlertConfigs}
-              />
-            );
-          })}
-        </Grid>
-        <Grid
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Typography>External alerts (News)</Typography>
-          <Switch defaultChecked />
-        </Grid>
-      </Box>
+      <Grid container>
+        {alertConfigs.map((configuration) => {
+          return (
+            <AlertConfigurationType
+              configuration={configuration}
+              configs={alertConfigs}
+              setConfigs={setAlertConfigs}
+            />
+          );
+        })}
+      </Grid>
+      <Grid
+        container
+        sx={{
+          display: "flex",
+          alignItems: "left",
+          height: "100%",
+          justifyContent: "center",
+          padding: 15,
+        }}
+      >
+        <Typography sx={{ fontSize: 24, color: "black" }}>
+          External alerts (News)
+        </Typography>
+        <YellowSwitch defaultChecked sx={{ size: "70" }} />
+      </Grid>
 
       <NewAlertForm
         handleOpen={newOpen}
