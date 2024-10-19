@@ -7,7 +7,11 @@ export default function AlertRow(props) {
 
   return (
     <>
-      <Grid container sx={{ minHeight: "25px", padding: "2px 4px 2px 4px" }}>
+      <Grid container sx={{ minHeight: "25px", padding: "2px 4px 2px 4px",
+        '&:hover': {
+          background: "#F0FFFF",
+          boxShadow: 10,},
+          }}>
         <Grid size={2}>
           <Chip
             color="error"
