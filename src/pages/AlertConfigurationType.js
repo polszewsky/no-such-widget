@@ -15,12 +15,24 @@ function AlertConfigurationType({ configuration }) {
       sx={{
         display: "flex",
         alignItems: "center",
+        postion: "absolute",
+        width: 450,
       }}
     >
-      <Accordion>
+      <Accordion
+        sx={{
+          width: "100%",
+          "&:hover": { color: "#ffd700", backgroundColor: "#002e3c" },
+        }}
+      >
         <AccordionSummary>
-          <Grid sx={{ padding: 1, width: "100%" }}>
-            <Typography size="auto">{configuration.title}</Typography>
+          <Grid sx={{ padding: 1, width: "100%", alignItems: "center" }}>
+            <Typography
+              sx={{ textAlign: "center", fontFamily: "bold" }}
+              size="auto"
+            >
+              {configuration.title}
+            </Typography>
           </Grid>
         </AccordionSummary>
         <AccordionDetails>
@@ -28,45 +40,65 @@ function AlertConfigurationType({ configuration }) {
             container
             sx={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              alignItems: "left",
             }}
           >
-            <Typography>Priority</Typography>
-            <Typography size={2}>{configuration.priority}</Typography>
+            <Grid size={6}>
+              <Typography>Priority</Typography>
+            </Grid>
+            <Grid size={6}>
+              <Typography sx={{ textAlign: "left" }}>
+                {configuration.priority}
+              </Typography>
+            </Grid>
           </Grid>
           <Grid
             container
             sx={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              alignItems: "left",
             }}
           >
-            <Typography>Type</Typography>
-            <Typography size={2}>{configuration.type}</Typography>
+            <Grid size={6}>
+              <Typography>Type</Typography>
+            </Grid>
+            <Grid size={6}>
+              <Typography sx={{ textAlign: "left" }}>
+                {configuration.type}
+              </Typography>
+            </Grid>
           </Grid>
           <Grid
             container
             sx={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              alignItems: "left",
             }}
           >
-            <Typography>Subtype</Typography>
-            <Typography size={2}>{configuration.subtype}</Typography>
+            <Grid size={6}>
+              <Typography>Subtype</Typography>
+            </Grid>
+            <Grid size={6}>
+              <Typography sx={{ textAlign: "left" }}>
+                {configuration.subtype}
+              </Typography>
+            </Grid>
           </Grid>
           <Grid
             container
             sx={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              alignItems: "left",
             }}
           >
-            <Typography>TriggerCondition</Typography>
-            <Typography size={2}>{configuration.triggerCondition}</Typography>
+            <Grid size={6}>
+              <Typography>Trigger Condition</Typography>
+            </Grid>
+            <Grid size={6}>
+              <Typography sx={{ textAlign: "left" }}>
+                {configuration.triggerCondition}
+              </Typography>
+            </Grid>
           </Grid>
         </AccordionDetails>
       </Accordion>

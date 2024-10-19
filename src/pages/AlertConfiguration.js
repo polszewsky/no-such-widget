@@ -58,21 +58,6 @@ function AlertConfiguration(props) {
             handleClose={() => setOpen(false)}
           ></NewAlertForm>
         </Grid>
-        <Grid
-          container
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            backgroundColor: "#D3D3D3",
-            borderRadius: "4px 4px 0px 0px",
-            padding: 2,
-          }}
-        >
-          <Grid size="auto">
-            <Typography>Title</Typography>
-          </Grid>
-        </Grid>
         <Grid>
           {alertConfigurationData.configurations.map((configuration) => {
             return (
