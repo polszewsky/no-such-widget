@@ -8,6 +8,9 @@ export const notificationsListSlice = createSlice({
   initialState: {
     allNotifications: [...initialList],
     filteredNotifications: [],
+
+    //selectedID
+    selectedNotification: {},
   },
 
   reducers: {
@@ -21,10 +24,39 @@ export const notificationsListSlice = createSlice({
         (not) => not.archived === !activeFilter
       );
     },
+    loadSelectedNotification: (state, action) => {
+      const selectedId = action.payload.id;
+
+      if (selectedId !== "" && selectedId !== null) {
+        state.selectedNotification = state.filteredNotifications
+          .filter((n) => n.id === selectedId)
+          .at(0);
+      }
+    },
+    archiveSelectedNotification: (state, action) => {
+      const selectedId = action.payload.id;
+
+      if (selectedId !== "" && selectedId !== null) {
+        // Find the object by id and update it immutably
+        const index = state.allNotifications.findIndex(
+          (n) => n.id === selectedId
+        );
+        if (index !== -1) {
+          state.allNotifications[index] = {
+            ...state.allNotifications[index],
+            archived: true,
+          };
+        }
+      }
+    },
   },
 });
 
-export const { markAllAsRead, getFilteredNotifications } =
-  notificationsListSlice.actions;
+export const {
+  markAllAsRead,
+  getFilteredNotifications,
+  loadSelectedNotification,
+  archiveSelectedNotification,
+} = notificationsListSlice.actions;
 
 export default notificationsListSlice.reducer;

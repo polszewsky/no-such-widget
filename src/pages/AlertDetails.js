@@ -1,8 +1,7 @@
-import React from "react";
-import { Typography, Button, Drawer, Box, Chip, Avatar } from "@mui/material";
+import React, { useState } from "react";
+import { Typography, Button, Drawer, Chip, Avatar } from "@mui/material";
 import { Grid } from "@mui/system";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -10,22 +9,28 @@ import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import { TimelineOppositeContent } from "@mui/lab";
+import { useDispatch, useSelector } from "react-redux";
+import AlertConfirmModal from "../modals/AlertConfirmModal";
+import { archiveSelectedNotification } from "../slices/notificationsList";
+import { notifyInfo } from "../actualAlert/actualAlertSlice";
 
-const styleBottonButton = {
-  bottom: 100,
-  right: 50,
-  width: 200,
-  height: 40,
-  position: "absolute",
-  backgroundColor: "#663399",
-  color: "white",
-};
+export default function AlertDetails({ handleOpen, closeAction }) {
+  const { selectedNotification = {} } = useSelector(
+    (store) => store.notificationsList
+  );
 
-export default function AlertDetails({ handleOpen, handleClose }) {
+  const dispatch = useDispatch();
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const openConfirmModal = (newValue) => {
+    setOpenModal(newValue);
+  };
+
   return (
     <Drawer
       open={handleOpen}
-      onClose={handleClose}
+      onClose={closeAction}
       anchor="right"
       PaperProps={{ sx: { width: 600 } }}
     >
@@ -40,7 +45,7 @@ export default function AlertDetails({ handleOpen, handleClose }) {
           <Typography
             sx={{ fontWeight: "bold", fontSize: "16pt", color: "#ffd700" }}
           >
-            Guarantee for the new Berlin Warehouse Loan
+            {selectedNotification?.id} | {selectedNotification?.title}
           </Typography>
         </Grid>
         <Grid
@@ -132,24 +137,35 @@ export default function AlertDetails({ handleOpen, handleClose }) {
         <Grid size={10} offset={{ md: 1 }} sx={{ marginTop: "1rem" }}>
           <Typography>
             <Typography variant="body1" align="justify">
-              Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam eaque ipsa,
-              quae ab illo inventore veritatis et quasi architecto beatae vitae
-              dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas
-              sit, aspernatur aut odit aut fugit, sed quia consequuntur magni
-              dolores eos, qui ratione voluptatem sequi nesciunt, neque porro
-              quisquam est, qui dolorem ipsum, quia dolor sit, amet,
-              consectetur, adipisci velit, sed quia non numquam eius modi
-              tempora incidunt, ut labore et dolore magnam aliquam quaerat
-              voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
-              ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-              consequatur? Quis autem vel eum iure reprehenderit, qui in ea
-              voluptate velit esse, quam nihil molestiae consequatur, vel illum,
-              qui dolorem eum fugiat, quo voluptas nulla pariatur?
+              {selectedNotification?.description}
             </Typography>
           </Typography>
         </Grid>
+        <Grid size={1} offset={{ md: 9 }}>
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={() => openConfirmModal(true)}
+          >
+            Archive
+          </Button>
+        </Grid>
       </Grid>
+
+      <AlertConfirmModal
+        open={openModal}
+        handleClose={() => openConfirmModal(false)}
+        title="Archive Notification Event"
+        description="Are you sure?"
+        action={() => {
+          dispatch(
+            archiveSelectedNotification({ id: selectedNotification.id })
+          );
+          openConfirmModal(false);
+          closeAction();
+          dispatch(notifyInfo("Notification event was archived. "));
+        }}
+      />
     </Drawer>
   );
 }

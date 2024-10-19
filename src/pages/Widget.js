@@ -10,14 +10,14 @@ import WidgetFilterModal from "../modals/WidgetFilterModal";
 import AlertRow from "./AlertRow";
 import { useSelector } from "react-redux";
 
-export default function Widget() {
+export default function Widget({ showList = false }) {
   const { filteredNotifications = [] } = useSelector(
     (store) => store.notificationsList
   );
 
   //configuration
   const [open, setOpen] = React.useState(false);
-  
+
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -42,7 +42,7 @@ export default function Widget() {
         >
           <Grid size={6} p={1}>
             <Badge
-              badgeContent={filteredNotifications.length ?? 0}
+              badgeContent={showList ? filteredNotifications.length : 0}
               color="primary"
               anchorOrigin={{
                 vertical: "top",
@@ -91,11 +91,16 @@ export default function Widget() {
           </Grid>
         </Grid>
 
-        <Paper elevation={3} sx={{ overflow: "auto", maxHeight: "500px" }}>
-          {filteredNotifications.map((noty, index) => (
-            <AlertRow key={index} notification={noty} />
-          ))}
+        <Paper
+          elevation={3}
+          sx={{ overflow: "auto", maxHeight: "500px", minHeight: "500px" }}
+        >
+          {showList &&
+            filteredNotifications.map((noty, index) => (
+              <AlertRow key={index} notification={noty} />
+            ))}
         </Paper>
+
         <Grid sx={{ minHeight: "2px" }} />
       </Paper>
 
