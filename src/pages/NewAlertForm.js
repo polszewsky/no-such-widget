@@ -13,7 +13,7 @@ import { Grid } from "@mui/system";
 function NewAlertForm({ handleOpen, handleClose }) {
   return (
     <div>
-      <Container>
+      <Grid>
         <Drawer
           anchor="right"
           open={handleOpen}
@@ -29,7 +29,8 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 justifyContent: "center",
                 backgroundColor: "#002e3c",
                 borderRadius: "4px 4px 0px 0px",
-                padding: 1,
+                padding: 2,
+                marginBottom: 2,
               }}
             >
               <Typography
@@ -46,32 +47,53 @@ function NewAlertForm({ handleOpen, handleClose }) {
             <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
               <TextField
                 id="outlined-basic"
-                label="Alert name"
+                label="title"
                 variant="outlined"
+                sx={{ width: "80%" }}
               />
             </Grid>
             <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
-              <TextField id="outlined-basic" label="type" variant="outlined" />
+              <TextField
+                id="outlined-basic"
+                label="priority"
+                variant="outlined"
+                sx={{ width: "80%" }}
+              />
             </Grid>
             <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 1,
+              }}
+            >
+              <TextField
+                id="outlined-basic"
+                label="type"
+                variant="outlined"
+                sx={{ width: "80%" }}
+              />
+            </Grid>
+            <Grid
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
@@ -79,27 +101,29 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 id="outlined-basic"
                 label="subtype"
                 variant="outlined"
+                sx={{ width: "80%" }}
               />
             </Grid>
             <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
               <TextField
                 id="outlined-basic"
-                label="frequency"
+                label="trigger condition"
                 variant="outlined"
+                sx={{ width: "80%" }}
               />
             </Grid>
             <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
@@ -107,47 +131,70 @@ function NewAlertForm({ handleOpen, handleClose }) {
                 id="outlined-basic"
                 label="Client"
                 variant="outlined"
+                sx={{ width: "80%" }}
               />
             </Grid>
             <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
               }}
             >
-              <Textarea placeholder="Description..." minRows={2} />
+              <Textarea
+                placeholder="Description..."
+                minRows={2}
+                sx={{ width: "80%" }}
+              />
             </Grid>
             <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: 1,
+                marginBottom: 2,
               }}
             >
-              <Textarea placeholder="URL" minRows={2} />
+              <Textarea placeholder="URL" minRows={2} sx={{ width: "80%" }} />
             </Grid>
-
             <Grid
               sx={{
                 display: "flex",
-                alignItems: "left",
-                justifyContent: "left",
+                alignItems: "center",
+                justifyContent: "space-around",
                 padding: 1,
               }}
             >
-              <Button variant="contained" color="success" onClick={handleClose}>
-                Save alert
+              <Button
+                variant="contained"
+                sx={{
+                  color: "#002e3c",
+                  backgroundColor: "#ffd700",
+                  fontWeight: "bold",
+                  minWidth: 100,
+                }}
+                onClick={handleClose}
+              >
+                Save
               </Button>
-              <Button variant="contained" color="error" onClick={handleClose}>
+              <Button
+                variant="contained"
+                sx={{
+                  color: "#002e3c",
+                  backgroundColor: "#ffd700",
+                  fontWeight: "bold",
+                  minWidth: 100,
+                }}
+                onClick={handleClose}
+              >
                 Cancel
               </Button>
             </Grid>
           </Box>
         </Drawer>
-      </Container>
+      </Grid>
     </div>
   );
 }

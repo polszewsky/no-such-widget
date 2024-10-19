@@ -100,6 +100,54 @@ function AlertConfigurationType({ configuration }) {
               </Typography>
             </Grid>
           </Grid>
+          <Grid
+            container
+            sx={{
+              display: "flex",
+              alignItems: "left",
+            }}
+          >
+            <Grid size={6}>
+              <Typography>Client</Typography>
+            </Grid>
+            <Grid size={6}>
+              <Typography sx={{ textAlign: "left" }}>
+                {configuration.client}
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            sx={{
+              display: "flex",
+              alignItems: "left",
+            }}
+          >
+            <Grid size={6}>
+              <Typography>Description</Typography>
+            </Grid>
+            <Grid size={6}>
+              <Typography sx={{ textAlign: "left" }}>
+                {configuration.description}
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            sx={{
+              display: "flex",
+              alignItems: "left",
+            }}
+          >
+            <Grid size={6}>
+              <Typography>Url</Typography>
+            </Grid>
+            <Grid size={6}>
+              <Typography sx={{ textAlign: "left" }}>
+                {configuration.url}
+              </Typography>
+            </Grid>
+          </Grid>
         </AccordionDetails>
       </Accordion>
     </Card>
