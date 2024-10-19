@@ -20,12 +20,12 @@ export default function Widget() {
         container
         sx={{ backgroundColor: "#f2f2f2", borderRadius: "4px 4px 0px 0px", padding: 1 }} //6042F7
       >
-        <Grid size={4} p={1}>
+        <Grid size={3} p={1}>
           <Typography sx={{ fontWeight: "bold", fontSize: 24, color: "#666" }}>
             Notifications
           </Typography>
         </Grid>
-        <Grid size={4} p={1}>
+        <Grid size={4} p={1} x={{ textAlign: "left" }}>
           <Button variant="contained" color="error">
             {alerts.length} new alerts
           </Button>
