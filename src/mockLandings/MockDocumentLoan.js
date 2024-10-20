@@ -51,7 +51,7 @@ export default function MockDocumentLoan() {
 
               <iframe
                 title="mock"
-                src="https://gh-users-search.netlify.app"
+                src="https://fondationlibancinema.org/wp-content/uploads/2024/06/pdfPlaceholder.pdf"
                 height="500"
                 width="950"
               />

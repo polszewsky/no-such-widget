@@ -76,7 +76,7 @@ function AlertConfiguration(props) {
             <Typography
               sx={{ fontWeight: "bold", fontSize: "12pt", color: "inherit" }}
             >
-              Add new Config
+              Add new Notification Case
             </Typography>
           </Grid>
         </Grid>

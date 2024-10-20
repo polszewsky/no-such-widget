@@ -5,6 +5,7 @@ import {
   Accordion,
   AccordionDetails,
   Tooltip,
+  Alert,
 } from "@mui/material";
 import { Grid } from "@mui/system";
 import React from "react";
@@ -107,6 +108,22 @@ function AlertConfigurationType({
           </Grid>
         </AccordionSummary>
         <AccordionDetails>
+          <Grid container>
+            <Alert variant="outlined" severity="error" sx={{ width: "100%" }}>
+              <Grid>
+                <Typography display="inline" sx={{ fontWeight: "bold" }}>
+                  Trigger Condition
+                </Typography>
+
+                <Typography
+                  display="inline"
+                  sx={{ marginLeft: "2rem", textAlign: "right" }}
+                >
+                  {alertConfiguration.triggerCondition}
+                </Typography>
+              </Grid>
+            </Alert>
+          </Grid>
           <Grid
             container
             sx={{
@@ -158,7 +175,7 @@ function AlertConfigurationType({
               </Typography>
             </Grid>
           </Grid>
-          <Grid
+          {/* <Grid
             container
             sx={{
               display: "flex",
@@ -176,7 +193,7 @@ function AlertConfigurationType({
                 {alertConfiguration.triggerCondition}
               </Typography>
             </Grid>
-          </Grid>
+          </Grid> */}
           <Grid
             container
             sx={{

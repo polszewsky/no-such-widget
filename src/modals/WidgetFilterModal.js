@@ -186,13 +186,13 @@ export default function WidgetFilterModal(props) {
               <List component="div" disablePadding>
                 <ListItemButton
                   sx={{ pl: 4 }}
-                  selected={filters.sort.type === "Regulatory"}
-                  onClick={() => handleTypeChange("Regulatory")}
+                  selected={filters.sort.type === "Market Alert"}
+                  onClick={() => handleTypeChange("Market Alert")}
                 >
                   <ListItemIcon>
                     <StarBorder />
                   </ListItemIcon>
-                  <ListItemText primary="Regulatory" />
+                  <ListItemText primary="Market Alert" />
                 </ListItemButton>
                 <ListItemButton
                   sx={{ pl: 4 }}

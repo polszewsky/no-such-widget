@@ -116,10 +116,13 @@ export default function Widget({ showList = false }) {
           elevation={3}
           sx={{ overflow: "auto", maxHeight: "500px", minHeight: "500px" }}
         >
-          {showList &&
+          {showList ? (
             filteredNotifications.map((noty, index) => (
               <AlertRow key={index} notification={noty} />
-            ))}
+            ))
+          ) : (
+            <AlertRow notification={filteredNotifications[1]} />
+          )}
         </Paper>
 
         <Grid sx={{ minHeight: "2px" }} />

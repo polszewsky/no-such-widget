@@ -66,27 +66,27 @@ export const alertConfigurationData = {
         "You have utilized 85% of your credit line on account #ACC-2024-XYZ. Please review your available credit.",
       url: "",
     },
-    {
-      title: "Payment Approval Deadline Approaching",
-      priority: "urgent",
-      type: "financial",
-      subtype: "--||--",
-      triggerCondition: "A few hours before approval deadline",
-      client: "Santander",
-      description:
-        "A payment of €200,000 requires approval by 17:00 today to avoid delays. Please approve the transaction in the system.",
-      url: "",
-    },
-    {
-      title: "New Regulatory Requirements",
-      priority: "medium",
-      type: "regulatory",
-      subtype: "--||--",
-      triggerCondition: "Post regulatory updates",
-      client: "None",
-      description:
-        "Recent regulatory changes may impact your investment strategy. Please review the latest compliance guidelines.",
-      url: "",
-    },
+    // {
+    //   title: "Payment Approval Deadline Approaching",
+    //   priority: "urgent",
+    //   type: "financial",
+    //   subtype: "--||--",
+    //   triggerCondition: "A few hours before approval deadline",
+    //   client: "Santander",
+    //   description:
+    //     "A payment of €200,000 requires approval by 17:00 today to avoid delays. Please approve the transaction in the system.",
+    //   url: "",
+    // },
+    // {
+    //   title: "New Regulatory Requirements",
+    //   priority: "medium",
+    //   type: "regulatory",
+    //   subtype: "--||--",
+    //   triggerCondition: "Post regulatory updates",
+    //   client: "None",
+    //   description:
+    //     "Recent regulatory changes may impact your investment strategy. Please review the latest compliance guidelines.",
+    //   url: "",
+    // },
   ],
 };

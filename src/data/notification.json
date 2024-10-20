@@ -19,7 +19,7 @@
     "id": 2,
     "datetime": "2024-10-22T12:00:00",
     "category": "automatic",
-    "read": true,
+    "read": false,
     "person": [
       {
         "fullname": "Andrew Kapiszon",
