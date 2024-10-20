@@ -7,9 +7,12 @@ import { alertConfigurationData } from "../data/AlertConfigurationData";
 import { OpenInNewOff } from "@mui/icons-material";
 import { alpha, styled } from "@mui/material/styles";
 import { yellow } from "@mui/material/colors";
+import ShareAlertModal from "../modals/ShareAlertModal";
 
 function AlertConfiguration(props) {
   const { open, onClose } = props;
+
+  const [openSend, setOpenSend] = React.useState(false);
 
   const [newOpen, setOpen] = React.useState(false);
 
@@ -86,6 +89,7 @@ function AlertConfiguration(props) {
               configuration={configuration}
               configs={alertConfigs}
               setConfigs={setAlertConfigs}
+              handleOpenSendModal={() => setOpenSend(true)}
             />
           );
         })}
@@ -122,6 +126,8 @@ function AlertConfiguration(props) {
         configs={alertConfigs}
         setConfigs={setAlertConfigs}
       />
+
+      <ShareAlertModal open={openSend} handleClose={() => setOpenSend(false)} />
     </Drawer>
   );
 }

@@ -15,7 +15,12 @@ import { useDispatch } from "react-redux";
 import { notifyError, notifyInfo } from "../actualAlert/actualAlertSlice";
 import EditAlertForm from "./EditAlertForm";
 
-function AlertConfigurationType({ configuration, configs, setConfigs }) {
+function AlertConfigurationType({
+  configuration,
+  configs,
+  setConfigs,
+  handleOpenSendModal,
+}) {
   const dispatch = useDispatch();
 
   const [alertConfiguration, setAlertConfiguration] =
@@ -93,7 +98,8 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
                   title="Edit configuration"
                   onClick={(e) => {
                     e.stopPropagation();
-                    dispatch(notifyError("Sorry, just proof of concept"));
+                    handleOpenSendModal();
+                    //dispatch(notifyError("Sorry, just proof of concept"));
                   }}
                 />
               </Tooltip>
