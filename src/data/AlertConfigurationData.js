@@ -3,8 +3,8 @@ export const alertConfigurationData = {
     {
       title: "Loan Payment Due Soon",
       priority: "high",
-      type: "Financial",
-      subtype: "Loan",
+      type: "financial",
+      subtype: "loan",
       triggerCondition: "7 days before the due date",
       client: "Zalando",
       description:
@@ -14,8 +14,8 @@ export const alertConfigurationData = {
     {
       title: "Approval Needed for High-Value Transaction",
       priority: "urgent",
-      type: "Transaction Approval",
-      subtype: "Payment",
+      type: "approval",
+      subtype: "payment",
       triggerCondition: "Detection of large transaction",
       client: "mBank",
       description:
@@ -25,8 +25,8 @@ export const alertConfigurationData = {
     {
       title: "Currency Exchange Rate Threshold Reached",
       priority: "medium",
-      type: "Market Alert",
-      subtype: "Stock change",
+      type: "market alert",
+      subtype: "stock change",
       triggerCondition: "Real-time threshold met",
       client: "None",
       description:
@@ -36,7 +36,7 @@ export const alertConfigurationData = {
     {
       title: "Potential Fraudulent Activity Detected",
       priority: "urgent",
-      type: "Security",
+      type: "security",
       subtype: "--||--",
       triggerCondition: "Immediate fraud detection",
       client: "Zalando",
@@ -47,7 +47,7 @@ export const alertConfigurationData = {
     {
       title: "Upcoming Quarterly Financial Report Due",
       priority: "medium",
-      type: "Compliance",
+      type: "compliance",
       subtype: "--||--",
       triggerCondition: "14 days before deadline",
       client: "None",
@@ -58,8 +58,8 @@ export const alertConfigurationData = {
     {
       title: "Credit Line Utilization Alert",
       priority: "high",
-      type: "Financial",
-      subtype: "Payment",
+      type: "financial",
+      subtype: "payment",
       triggerCondition: "Credit line usage exceeds 80%",
       client: "Commerzbank",
       description:
@@ -69,7 +69,7 @@ export const alertConfigurationData = {
     {
       title: "Payment Approval Deadline Approaching",
       priority: "urgent",
-      type: "Urgent",
+      type: "financial",
       subtype: "--||--",
       triggerCondition: "A few hours before approval deadline",
       client: "Santander",
@@ -80,7 +80,7 @@ export const alertConfigurationData = {
     {
       title: "New Regulatory Requirements",
       priority: "medium",
-      type: "Regulatory",
+      type: "regulatory",
       subtype: "--||--",
       triggerCondition: "Post regulatory updates",
       client: "None",

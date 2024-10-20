@@ -13,9 +13,16 @@ import EditIcon from "@mui/icons-material/Edit";
 import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 import { useDispatch } from "react-redux";
 import { notifyError, notifyInfo } from "../actualAlert/actualAlertSlice";
+import EditAlertForm from "./EditAlertForm";
 
 function AlertConfigurationType({ configuration, configs, setConfigs }) {
   const dispatch = useDispatch();
+
+  const [alertConfiguration, setAlertConfiguration] =
+    React.useState(configuration);
+
+  const [newOpen, setOpen] = React.useState(false);
+
   return (
     <Card
       container
@@ -28,7 +35,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
     >
       <Accordion
         sx={{
-          width: "80%",
+          width: "100%",
           "&:hover": {
             color: "#ffd700",
             backgroundColor: "#002e3cbb",
@@ -54,34 +61,40 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             >
               {configuration.title}
             </Typography>
-            {/* <Grid size="auto" sx={{ justifyContent: "space-between" }}>
+            <Grid size="auto" sx={{ justifyContent: "space-between" }}>
               <Tooltip title="Delete">
                 <DeleteForeverIcon
+                  sx={{ paddingRight: 1 }}
                   title="Remove configuration"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setConfigs(
                       configs.filter((a) => a.title !== configuration.title)
                     );
+                    dispatch(notifyInfo("Configuration has been removed"));
                   }}
                 />
               </Tooltip>
               <Tooltip title="Edit">
                 <EditIcon
+                  sx={{ paddingRight: 1 }}
                   title="Edit configuration"
-                  onClick={() =>
-                    dispatch(notifyError("Sorry, just proof of concept"))
-                  }
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setOpen(true);
+                  }}
                 />
               </Tooltip>
               <Tooltip title="Share configuration">
                 <ScreenShareIcon
                   title="Edit configuration"
-                  onClick={() =>
-                    dispatch(notifyError("Sorry, just proof of concept"))
-                  }
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    dispatch(notifyError("Sorry, just proof of concept"));
+                  }}
                 />
               </Tooltip>
-            </Grid> */}
+            </Grid>
           </Grid>
         </AccordionSummary>
         <AccordionDetails>
@@ -207,59 +220,12 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
           </Grid>
         </AccordionDetails>
       </Accordion>
-
-      <Grid
-        size="auto"
-        sx={{
-          justifyContent: "space-between",
-          display: "flex",
-          width: "auto",
-          lenght: "auto",
-        }}
-      >
-        <Tooltip title="Delete">
-          <DeleteForeverIcon
-            sx={{
-              "&:hover": {
-                cursor: "pointer",
-              },
-            }}
-            title="Remove configuration"
-            onClick={() => {
-              setConfigs(
-                configs.filter((a) => a.title !== configuration.title)
-              );
-              dispatch(notifyInfo("Configuration has been removed!"));
-            }}
-          />
-        </Tooltip>
-        <Tooltip title="Edit">
-          <EditIcon
-            sx={{
-              "&:hover": {
-                cursor: "pointer",
-              },
-            }}
-            title="Edit configuration"
-            onClick={() =>
-              dispatch(notifyError("Sorry, just proof of concept"))
-            }
-          />
-        </Tooltip>
-        <Tooltip title="Share configuration">
-          <ScreenShareIcon
-            sx={{
-              "&:hover": {
-                cursor: "pointer",
-              },
-            }}
-            title="Edit configuration"
-            onClick={() =>
-              dispatch(notifyError("Sorry, just proof of concept"))
-            }
-          />
-        </Tooltip>
-      </Grid>
+      <EditAlertForm
+        handleOpen={newOpen}
+        handleClose={() => setOpen(false)}
+        alertConfiguration={alertConfiguration}
+        setAlertConfiguration={setAlertConfiguration}
+      />
     </Card>
   );
 }

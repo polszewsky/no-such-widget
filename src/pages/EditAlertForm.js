@@ -12,23 +12,29 @@ import {
 } from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
 import { Grid } from "@mui/system";
-import { useDispatch } from "react-redux";
-import { notifySuccess } from "../actualAlert/actualAlertSlice";
 
-function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
-  const [title, setTitle] = React.useState("");
-  const [priority, setPriority] = React.useState("");
-  const [type, setType] = React.useState("");
-  const [subtype, setSubtype] = React.useState("");
-  const [triggerCondition, setTriggerCondition] = React.useState("");
-  const [client, setClient] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [url, setUrl] = React.useState("");
-
-  const dispatch = useDispatch();
+function EditAlertForm({
+  handleOpen,
+  handleClose,
+  alertConfiguration,
+  setAlertConfiguration,
+}) {
+  const [title, setTitle] = React.useState(alertConfiguration.title);
+  const [priority, setPriority] = React.useState(alertConfiguration.priority);
+  const [type, setType] = React.useState(alertConfiguration.type);
+  const [subtype, setSubtype] = React.useState(alertConfiguration.subtype);
+  const [triggerCondition, setTriggerCondition] = React.useState(
+    alertConfiguration.triggerCondition
+  );
+  const [client, setClient] = React.useState(alertConfiguration.client);
+  const [description, setDescription] = React.useState(
+    alertConfiguration.description
+  );
+  const [url, setUrl] = React.useState(alertConfiguration.url);
 
   return (
     <div>
+      \
       <Grid>
         <Drawer
           anchor="right"
@@ -57,7 +63,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                   color: "#ffd700",
                 }}
               >
-                New custom notification
+                Edit notification
               </Typography>
             </Grid>
             <Grid
@@ -73,6 +79,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                 id="outlined-basic"
                 label="title"
                 variant="outlined"
+                value={title}
                 sx={{ width: "80%" }}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -86,12 +93,10 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
               }}
             >
               <FormControl required sx={{ width: "80%" }}>
-                <InputLabel id="demo-simple-select-label">Priority</InputLabel>
+                <InputLabel>Priority</InputLabel>
                 <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={priority}
                   label="Priority"
+                  value={priority}
                   onChange={(e) => setPriority(e.target.value)}
                 >
                   <MenuItem value={"urgent"}>urgent</MenuItem>
@@ -109,13 +114,11 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                 padding: 1,
               }}
             >
-              <FormControl required sx={{ width: "80%" }}>
-                <InputLabel id="demo-simple-select-label">Type</InputLabel>
+              <FormControl value={type} required sx={{ width: "80%" }}>
+                <InputLabel>Type</InputLabel>
                 <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={type}
                   label="Type"
+                  value={type}
                   onChange={(e) => setType(e.target.value)}
                 >
                   <MenuItem value={"financial"}>financial</MenuItem>
@@ -135,13 +138,11 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                 padding: 1,
               }}
             >
-              <FormControl required sx={{ width: "80%" }}>
-                <InputLabel id="demo-simple-select-label">Subtype</InputLabel>
+              <FormControl value={subtype} required sx={{ width: "80%" }}>
+                <InputLabel>Subtype</InputLabel>
                 <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={subtype}
                   label="Subtype"
+                  value={subtype}
                   onChange={(e) => setSubtype(e.target.value)}
                 >
                   <MenuItem value={"loan"}>loan</MenuItem>
@@ -166,6 +167,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                 id="outlined-basic"
                 label="trigger condition"
                 variant="outlined"
+                value={triggerCondition}
                 sx={{ width: "80%" }}
                 onChange={(e) => setTriggerCondition(e.target.value)}
               />
@@ -182,6 +184,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                 id="outlined-basic"
                 label="Client"
                 variant="outlined"
+                value={client}
                 sx={{ width: "80%" }}
                 onChange={(e) => setClient(e.target.value)}
               />
@@ -197,6 +200,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
               <Textarea
                 placeholder="Description..."
                 minRows={2}
+                value={description}
                 sx={{ width: "80%" }}
                 onChange={(e) => setDescription(e.target.value)}
               />
@@ -212,6 +216,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
               <Textarea
                 placeholder="URL"
                 minRows={2}
+                value={url}
                 sx={{ width: "80%" }}
                 onChange={(e) => setUrl(e.target.value)}
               />
@@ -238,8 +243,8 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
               }}
             >
               <Button
-                disabled={!title || !priority || !type | !subtype}
                 variant="contained"
+                disabled={!title || !priority || !type | !subtype}
                 sx={{
                   color: "#002e3c",
                   backgroundColor: "#ffd700",
@@ -247,23 +252,17 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                   minWidth: 100,
                 }}
                 onClick={() => {
-                  setConfigs([
-                    ...configs,
-                    {
-                      title: title,
-                      priority: priority,
-                      type: type,
-                      subtype: subtype,
-                      triggerCondition: triggerCondition,
-                      client: client,
-                      description: description,
-                      url: url,
-                    },
-                  ]);
+                  setAlertConfiguration({
+                    title: "ssss",
+                    priority: priority,
+                    type: type,
+                    subtype: subtype,
+                    triggerCondition: triggerCondition,
+                    client: client,
+                    description: description,
+                    url: url,
+                  });
                   handleClose();
-                  dispatch(
-                    notifySuccess("New configuration has been created!")
-                  );
                 }}
               >
                 Save
@@ -288,4 +287,4 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
   );
 }
 
-export default NewAlertForm;
+export default EditAlertForm;
