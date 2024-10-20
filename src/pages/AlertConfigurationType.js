@@ -31,6 +31,8 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
         alignItems: "center",
         postion: "absolute",
         width: 550,
+        border: "1px solid #ddd",
+        marginTop: "2px",
       }}
     >
       <Accordion
@@ -64,7 +66,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             <Grid size="auto" sx={{ justifyContent: "space-between" }}>
               <Tooltip title="Delete">
                 <DeleteForeverIcon
-                  sx={{ paddingRight: 1 }}
+                  sx={{ paddingRight: 1, color: "#002e3c" }}
                   title="Remove configuration"
                   onClick={(e) => {
                     setConfigs(
@@ -77,7 +79,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
               </Tooltip>
               <Tooltip title="Edit">
                 <EditIcon
-                  sx={{ paddingRight: 1 }}
+                  sx={{ paddingRight: 1, color: "#002e3c" }}
                   title="Edit configuration"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -87,6 +89,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
               </Tooltip>
               <Tooltip title="Share configuration">
                 <ScreenShareIcon
+                  sx={{ color: "#002e3c" }}
                   title="Edit configuration"
                   onClick={(e) => {
                     e.stopPropagation();

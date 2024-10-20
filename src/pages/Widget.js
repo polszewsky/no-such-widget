@@ -32,6 +32,16 @@ export default function Widget({ showList = false }) {
     setFilterOpen(newOpen);
   };
 
+  const unreadNotifications = (notifs) => {
+    let unread = 0;
+
+    notifs.map((n) => {
+      if (n.read === false) unread++;
+    });
+
+    return unread;
+  };
+
   return (
     <>
       <Paper elevation={3}>
@@ -46,7 +56,9 @@ export default function Widget({ showList = false }) {
         >
           <Grid size={6} p={1}>
             <Badge
-              badgeContent={showList ? filteredNotifications.length : 0}
+              badgeContent={
+                showList ? unreadNotifications(filteredNotifications) : 0
+              }
               color="primary"
               anchorOrigin={{
                 vertical: "top",

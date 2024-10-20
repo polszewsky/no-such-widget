@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Box, Switch, Drawer } from "@mui/material";
+import { Typography, Box, Switch, Drawer, Divider } from "@mui/material";
 import { Grid } from "@mui/system";
 import AlertConfigurationType from "./AlertConfigurationType";
 import NewAlertForm from "./NewAlertForm";
@@ -97,9 +97,13 @@ function AlertConfiguration(props) {
           alignItems: "left",
           height: "100%",
           justifyContent: "center",
-          paddingTop: 15,
+          marginTop: "2rem",
+          marginBottom: "1rem",
         }}
       >
+        <Grid size={10}>
+          <Divider />
+        </Grid>
         <Typography sx={{ fontSize: 24, color: "black" }}>
           External Notifications (News)
         </Typography>
