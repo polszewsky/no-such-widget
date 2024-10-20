@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
 import { Grid } from "@mui/system";
+import { useDispatch } from "react-redux";
+import { notifyInfo } from "../actualAlert/actualAlertSlice";
 
 function EditAlertForm({
   handleOpen,
@@ -31,6 +33,8 @@ function EditAlertForm({
     alertConfiguration.description
   );
   const [url, setUrl] = React.useState(alertConfiguration.url);
+
+  const dispatch = useDispatch();
 
   return (
     <Drawer
@@ -259,6 +263,7 @@ function EditAlertForm({
                 description: description,
                 url: url,
               });
+              dispatch(notifyInfo(title + " config has been edited"));
               handleClose();
             }}
           >
