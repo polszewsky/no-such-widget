@@ -18,6 +18,9 @@ import {
 import { notifyInfo } from "../actualAlert/actualAlertSlice";
 import { useNavigate } from "react-router";
 import { Archive, MarkEmailRead } from "@mui/icons-material";
+import { LineChart } from "@mui/x-charts/LineChart";
+import ExchangeChart from "../mockLandings/ExchangeChart";
+import TableMock from "../mockLandings/TableMock";
 
 export default function AlertDetails({ handleOpen, closeAction }) {
   const { selectedNotification = { person: [] } } = useSelector(
@@ -115,27 +118,6 @@ export default function AlertDetails({ handleOpen, closeAction }) {
             alignItems: "center",
           }}
         >
-          {/* {selectedNotification.person.map((person, index) => ((
-            <Grid>
-                <Chip
-                  sx={{
-                    backgroundColor: "green",
-                    fontSize: "14pt",
-                    padding: "1rem",
-                  }}
-                  avatar={
-                    <Avatar
-                      sx={{ width: 56, height: 56 }}
-                      alt="Natacha"
-                      src="https://avatar.iran.liara.run/public/45"
-                    />
-                  }
-                  label={person.fullname}
-                  variant="outlined"
-                />
-              </Grid>
-          ))} */}
-
           {selectedNotification?.person?.map((person, index) => (
             <Grid>
               <Chip
@@ -181,6 +163,10 @@ export default function AlertDetails({ handleOpen, closeAction }) {
             </Typography>
           </Typography>
         </Grid>
+
+        {selectedNotification?.type === "Market Alert" && <ExchangeChart />}
+        {selectedNotification?.type === "Financial" && <TableMock />}
+
         <Grid
           size={10}
           offset={{ md: 1 }}
@@ -189,6 +175,8 @@ export default function AlertDetails({ handleOpen, closeAction }) {
           sx={{
             justifyContent: "flex-end",
             alignItems: "center",
+            marginBottom: "1rem",
+            marginTop: "1rem",
           }}
         >
           <Grid>
