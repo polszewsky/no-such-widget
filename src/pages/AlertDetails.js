@@ -17,6 +17,7 @@ import {
 } from "../slices/notificationsList";
 import { notifyInfo } from "../actualAlert/actualAlertSlice";
 import { useNavigate } from "react-router";
+import { Archive, MarkEmailRead } from "@mui/icons-material";
 
 export default function AlertDetails({ handleOpen, closeAction }) {
   const { selectedNotification = { person: [] } } = useSelector(
@@ -63,7 +64,7 @@ export default function AlertDetails({ handleOpen, closeAction }) {
 
               color: "#333",
               "&:hover": {
-                color: "blue",
+                color: "#2169F3",
                 cursor: "pointer",
               },
             }}
@@ -76,7 +77,7 @@ export default function AlertDetails({ handleOpen, closeAction }) {
               <Typography
                 sx={{ fontWeight: "bold", fontSize: "12pt", color: "inherit" }}
               >
-                Go to the Linked Entity
+                Go to the Action
               </Typography>
             </Grid>
           </Grid>
@@ -180,30 +181,45 @@ export default function AlertDetails({ handleOpen, closeAction }) {
             </Typography>
           </Typography>
         </Grid>
-        <Grid size={4} offset={{ md: 7 }}>
-          <Button
-            variant="outlined"
-            color="error"
-            onClick={() => openConfirmModal(true)}
-          >
-            Move to Archive
-          </Button>
-        </Grid>
-        {!selectedNotification?.read && (
-          <Grid size={4} offset={{ md: 7 }}>
+        <Grid
+          size={10}
+          offset={{ md: 1 }}
+          container
+          direction="row"
+          sx={{
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <Grid>
             <Button
-              variant="text"
-              color="primary"
-              onClick={() =>
-                dispatch(
-                  markNotificationAsRead({ id: selectedNotification?.id })
-                )
-              }
+              startIcon={<Archive />}
+              size="small"
+              variant="contained"
+              color="error"
+              onClick={() => openConfirmModal(true)}
             >
-              mark as read
+              Move to Archive
             </Button>
           </Grid>
-        )}
+          {!selectedNotification?.read && (
+            <Grid sx={{ marginLeft: "1rem" }}>
+              <Button
+                startIcon={<MarkEmailRead />}
+                size="small"
+                variant="contained"
+                color="primary"
+                onClick={() =>
+                  dispatch(
+                    markNotificationAsRead({ id: selectedNotification?.id })
+                  )
+                }
+              >
+                mark as read
+              </Button>
+            </Grid>
+          )}
+        </Grid>
       </Grid>
 
       <AlertConfirmModal
