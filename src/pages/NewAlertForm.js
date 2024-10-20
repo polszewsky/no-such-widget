@@ -1,5 +1,15 @@
 import React from "react";
-import { Drawer, Box, Typography, TextField, Button } from "@mui/material";
+import {
+  Drawer,
+  Box,
+  Typography,
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
 import { Grid } from "@mui/system";
 import { useDispatch } from "react-redux";
@@ -59,6 +69,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
               }}
             >
               <TextField
+                required
                 id="outlined-basic"
                 label="title"
                 variant="outlined"
@@ -74,13 +85,21 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                 padding: 1,
               }}
             >
-              <TextField
-                id="outlined-basic"
-                label="priority"
-                variant="outlined"
-                sx={{ width: "80%" }}
-                onChange={(e) => setPriority(e.target.value)}
-              />
+              <FormControl required sx={{ width: "80%" }}>
+                <InputLabel id="demo-simple-select-label">Priority</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={priority}
+                  label="Priority"
+                  onChange={(e) => setPriority(e.target.value)}
+                >
+                  <MenuItem value={"urgent"}>urgent</MenuItem>
+                  <MenuItem value={"high"}>high</MenuItem>
+                  <MenuItem value={"medium"}>medium</MenuItem>
+                  <MenuItem value={"minor"}>minor</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
             <Grid
               sx={{
@@ -90,13 +109,25 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                 padding: 1,
               }}
             >
-              <TextField
-                id="outlined-basic"
-                label="type"
-                variant="outlined"
-                sx={{ width: "80%" }}
-                onChange={(e) => setType(e.target.value)}
-              />
+              <FormControl required sx={{ width: "80%" }}>
+                <InputLabel id="demo-simple-select-label">Type</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={type}
+                  label="Type"
+                  onChange={(e) => setType(e.target.value)}
+                >
+                  <MenuItem value={"financial"}>financial</MenuItem>
+                  <MenuItem value={"transacion approval"}>
+                    transacion approval
+                  </MenuItem>
+                  <MenuItem value={"security"}>security</MenuItem>
+                  <MenuItem value={"market alert"}>market alert</MenuItem>
+                  <MenuItem value={"compliance"}>compliance</MenuItem>
+                  <MenuItem value={"regulatory"}>regulatory</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
             <Grid
               sx={{
@@ -106,13 +137,24 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
                 padding: 1,
               }}
             >
-              <TextField
-                id="outlined-basic"
-                label="subtype"
-                variant="outlined"
-                sx={{ width: "80%" }}
-                onChange={(e) => setSubtype(e.target.value)}
-              />
+              <FormControl required sx={{ width: "80%" }}>
+                <InputLabel id="demo-simple-select-label">Subtype</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={subtype}
+                  label="Subtype"
+                  onChange={(e) => setSubtype(e.target.value)}
+                >
+                  <MenuItem value={"loan"}>loan</MenuItem>
+                  <MenuItem value={"payment"}>payment</MenuItem>
+                  <MenuItem value={"stock change"}>stock change</MenuItem>
+                  <MenuItem value={"market alert"}>market alert</MenuItem>
+                  <MenuItem value={"compliance"}>compliance</MenuItem>
+                  <MenuItem value={"regulatory"}>regulatory</MenuItem>
+                  <MenuItem value={"--||--"}>--||--</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
             <Grid
               sx={{
@@ -186,6 +228,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
               }}
             >
               <Button
+                disabled={!title || !priority || !type | !subtype}
                 variant="contained"
                 sx={{
                   color: "#002e3c",
