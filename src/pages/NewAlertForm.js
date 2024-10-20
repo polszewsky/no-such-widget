@@ -15,14 +15,19 @@ import { useDispatch } from "react-redux";
 import { notifySuccess } from "../actualAlert/actualAlertSlice";
 
 function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
-  const [title, setTitle] = React.useState("");
+  const [title, setTitle] = React.useState("Any payment from ZALANDO");
   const [priority, setPriority] = React.useState("");
   const [type, setType] = React.useState("");
   const [subtype, setSubtype] = React.useState("");
-  const [triggerCondition, setTriggerCondition] = React.useState("");
-  const [client, setClient] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [url, setUrl] = React.useState("");
+  const [triggerCondition, setTriggerCondition] = React.useState("when payments number > 0");
+  const [client, setClient] = React.useState("Zalando Sp. Z.o.o");
+  const [description, setDescription] = React.useState(`
+    To provide you with an optimal website experience in particular, we 
+    use cookies and web technologies with your consent for functional, 
+    statistical, convenience and marketing purposes, as well as for the 
+    display of personalized content.
+  `);
+  const [url, setUrl] = React.useState(" https://www.commerzbank.de/group/");
 
   const dispatch = useDispatch();
 
@@ -65,7 +70,6 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           sx={{ width: "80%" }}
           onChange={(e) => setTitle(e.target.value)}
           size="small"
-          defaultValue="Any payment from ZALANDO"
         />
       </Grid>
       <Grid
@@ -169,7 +173,6 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           sx={{ width: "80%" }}
           onChange={(e) => setTriggerCondition(e.target.value)}
           size="small"
-          defaultValue={"when payments number > 0"}
         />
       </Grid>
       <Grid
@@ -187,7 +190,6 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           sx={{ width: "80%" }}
           onChange={(e) => setClient(e.target.value)}
           size="small"
-          defaultValue="Zalando Sp. Z.o.o"
         ></TextField>
       </Grid>
       <Grid
@@ -203,10 +205,6 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           minRows={2}
           sx={{ width: "80%" }}
           onChange={(e) => setDescription(e.target.value)}
-          defaultValue=" To provide you with an optimal website experience in particular, we
-          use cookies and web technologies with your consent for functional,
-          statistical, convenience and marketing purposes, as well as for the
-          display of personalized content."
         ></Textarea>
       </Grid>
       <Grid
@@ -222,7 +220,6 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           minRows={2}
           sx={{ width: "80%" }}
           onChange={(e) => setUrl(e.target.value)}
-          defaultValue=" https://www.commerzbank.de/group/"
         />
       </Grid>
       <Grid
