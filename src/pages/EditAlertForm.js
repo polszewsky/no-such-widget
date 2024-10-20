@@ -253,7 +253,7 @@ function EditAlertForm({
                 }}
                 onClick={() => {
                   setAlertConfiguration({
-                    title: "ssss",
+                    title: title,
                     priority: priority,
                     type: type,
                     subtype: subtype,

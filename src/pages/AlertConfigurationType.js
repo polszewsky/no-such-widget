@@ -59,7 +59,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
               }}
               size="auto"
             >
-              {configuration.title}
+              {alertConfiguration.title}
             </Typography>
             <Grid size="auto" sx={{ justifyContent: "space-between" }}>
               <Tooltip title="Delete">
@@ -67,10 +67,10 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
                   sx={{ paddingRight: 1 }}
                   title="Remove configuration"
                   onClick={(e) => {
-                    e.stopPropagation();
                     setConfigs(
                       configs.filter((a) => a.title !== configuration.title)
                     );
+                    e.stopPropagation();
                     dispatch(notifyInfo("Configuration has been removed"));
                   }}
                 />
@@ -111,7 +111,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
-                {configuration.priority}
+                {alertConfiguration.priority}
               </Typography>
             </Grid>
           </Grid>
@@ -128,7 +128,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
-                {configuration.type}
+                {alertConfiguration.type}
               </Typography>
             </Grid>
           </Grid>
@@ -145,7 +145,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
-                {configuration.subtype}
+                {alertConfiguration.subtype}
               </Typography>
             </Grid>
           </Grid>
@@ -164,7 +164,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
-                {configuration.triggerCondition}
+                {alertConfiguration.triggerCondition}
               </Typography>
             </Grid>
           </Grid>
@@ -181,7 +181,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
-                {configuration.client}
+                {alertConfiguration.client}
               </Typography>
             </Grid>
           </Grid>
@@ -197,7 +197,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
-                {configuration.url}
+                {alertConfiguration.url}
               </Typography>
             </Grid>
           </Grid>
@@ -214,7 +214,7 @@ function AlertConfigurationType({ configuration, configs, setConfigs }) {
             </Grid>
             <Grid size={6}>
               <Typography sx={{ textAlign: "left" }}>
-                {configuration.description}
+                {alertConfiguration.description}
               </Typography>
             </Grid>
           </Grid>
