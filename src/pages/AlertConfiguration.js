@@ -97,11 +97,11 @@ function AlertConfiguration(props) {
           alignItems: "left",
           height: "100%",
           justifyContent: "center",
-          padding: 15,
+          paddingTop: 15,
         }}
       >
         <Typography sx={{ fontSize: 24, color: "black" }}>
-          External alerts (News)
+          External Notifications (News)
         </Typography>
         <YellowSwitch defaultChecked sx={{ size: "70" }} />
       </Grid>
