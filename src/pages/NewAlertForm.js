@@ -19,7 +19,9 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
   const [priority, setPriority] = React.useState("medium");
   const [type, setType] = React.useState("financial");
   const [subtype, setSubtype] = React.useState("payment");
-  const [triggerCondition, setTriggerCondition] = React.useState("when payments number > 0");
+  const [triggerCondition, setTriggerCondition] = React.useState(
+    "when payments number > 0"
+  );
   const [client, setClient] = React.useState("Zalando Sp. Z.o.o");
   const [description, setDescription] = React.useState(`
     To provide you with an optimal website experience in particular, we 
@@ -28,7 +30,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
     display of personalized content.
   `);
   const [url, setUrl] = React.useState();
-    //" https://www.commerzbank.de/group/"
+  //" https://www.commerzbank.de/group/"
   const dispatch = useDispatch();
 
   return (
@@ -70,6 +72,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           sx={{ width: "80%" }}
           onChange={(e) => setTitle(e.target.value)}
           size="small"
+          value={title}
         />
       </Grid>
       <Grid
@@ -221,7 +224,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           minRows={2}
           sx={{ width: "80%" }}
           onChange={(e) => setUrl(e.target.value)}
-          defaultValue={"https://www.commerzbank.de/group/" }
+          defaultValue={"https://www.commerzbank.de/group/"}
         />
       </Grid>
       <Grid
