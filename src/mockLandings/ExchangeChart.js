@@ -1,5 +1,4 @@
 import * as React from "react";
-import Typography from "@mui/material/Typography";
 import { BarPlot } from "@mui/x-charts/BarChart";
 import { LineHighlightPlot, LinePlot } from "@mui/x-charts/LineChart";
 import { ResponsiveChartContainer } from "@mui/x-charts/ResponsiveChartContainer";

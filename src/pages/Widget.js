@@ -37,6 +37,7 @@ export default function Widget({ showList = false }) {
 
     notifs.map((n) => {
       if (n.read === false) unread++;
+      return unread;
     });
 
     return unread;

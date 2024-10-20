@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Box, Switch, Drawer, Divider } from "@mui/material";
+import { Typography, Switch, Drawer, Divider } from "@mui/material";
 import { Grid } from "@mui/system";
 import AlertConfigurationType from "./AlertConfigurationType";
 import NewAlertForm from "./NewAlertForm";
@@ -104,10 +104,16 @@ function AlertConfiguration(props) {
         <Grid size={10}>
           <Divider />
         </Grid>
-        <Typography sx={{ fontSize: 24, color: "black" }}>
-          External Notifications (News)
-        </Typography>
-        <YellowSwitch defaultChecked sx={{ size: "70" }} />
+        <Grid container>
+          <Grid size={8}>
+            <Typography sx={{ fontSize: 18, color: "black" }}>
+              External Notifications (News)
+            </Typography>
+          </Grid>
+          <Grid size={4}>
+            <YellowSwitch defaultChecked sx={{ size: "70" }} />
+          </Grid>
+        </Grid>
       </Grid>
 
       <NewAlertForm

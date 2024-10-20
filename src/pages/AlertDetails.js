@@ -18,7 +18,6 @@ import {
 import { notifyInfo } from "../actualAlert/actualAlertSlice";
 import { useNavigate } from "react-router";
 import { Archive, MarkEmailRead } from "@mui/icons-material";
-import { LineChart } from "@mui/x-charts/LineChart";
 import ExchangeChart from "../mockLandings/ExchangeChart";
 import TableMock from "../mockLandings/TableMock";
 
