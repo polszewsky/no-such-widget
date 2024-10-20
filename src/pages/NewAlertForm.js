@@ -16,9 +16,9 @@ import { notifySuccess } from "../actualAlert/actualAlertSlice";
 
 function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
   const [title, setTitle] = React.useState("Any payment from ZALANDO");
-  const [priority, setPriority] = React.useState("");
-  const [type, setType] = React.useState("");
-  const [subtype, setSubtype] = React.useState("");
+  const [priority, setPriority] = React.useState("medium");
+  const [type, setType] = React.useState("financial");
+  const [subtype, setSubtype] = React.useState("payment");
   const [triggerCondition, setTriggerCondition] = React.useState("when payments number > 0");
   const [client, setClient] = React.useState("Zalando Sp. Z.o.o");
   const [description, setDescription] = React.useState(`
@@ -27,8 +27,8 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
     statistical, convenience and marketing purposes, as well as for the 
     display of personalized content.
   `);
-  const [url, setUrl] = React.useState(" https://www.commerzbank.de/group/");
-
+  const [url, setUrl] = React.useState();
+    //" https://www.commerzbank.de/group/"
   const dispatch = useDispatch();
 
   return (
@@ -87,7 +87,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={priority !== "" ? priority : "medium"}
+            value={priority}
             label="Priority"
             onChange={(e) => setPriority(e.target.value)}
             size="small"
@@ -114,7 +114,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={type !== "" ? type : "financial"}
+            value={type}
             label="Type"
             onChange={(e) => setType(e.target.value)}
             size="small"
@@ -143,7 +143,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={subtype !== "" ? subtype : "payment"}
+            value={subtype}
             label="Subtype"
             onChange={(e) => setSubtype(e.target.value)}
             size="small"
@@ -173,6 +173,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           sx={{ width: "80%" }}
           onChange={(e) => setTriggerCondition(e.target.value)}
           size="small"
+          //defaultValue={"when payments number > 0"}
         />
       </Grid>
       <Grid
@@ -220,6 +221,7 @@ function NewAlertForm({ handleOpen, handleClose, configs, setConfigs }) {
           minRows={2}
           sx={{ width: "80%" }}
           onChange={(e) => setUrl(e.target.value)}
+          defaultValue={"https://www.commerzbank.de/group/" }
         />
       </Grid>
       <Grid
